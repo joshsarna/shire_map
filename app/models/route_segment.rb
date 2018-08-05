@@ -1,0 +1,2 @@
+class RouteSegment < ApplicationRecord
+end
