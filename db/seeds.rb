@@ -85,59 +85,201 @@ RouteSegment.create(nw_end: 41, se_end: 30, road: "Unmarked Trail")
 
 
 # to update distances and times based on location coords
-# segments = RouteSegment.all
-# segments.each do |segment|
-#   loc1 = Location.find(segment["nw_end"])
-#   loc2 = Location.find(segment["se_end"])
-#   distance = loc1.distance_from(loc2["name"])
-#   segment["distance"] = distance
-#   segment["time"] = distance * 60
-#   segment.save
-# end
-
-def find_route(start_id,end_id)
-  possible_routes = []
-  directions = []
-  # starts = RouteSegment.where('nw_end = ? OR se_end = ?',start_id, start_id)
-  starts = RouteSegment.where(nw_end: start_id).or(RouteSegment.where(se_end: start_id))
-  starts.each do |start|
-    if start[:nw_end] == start_id
-      first_tail = start[:se_end]
-    else
-      first_tail = start[:nw_end]
-    end
-    possible_routes << {route: [start.id], tail: first_tail}
+segments = RouteSegment.all
+segments.each do |segment|
+  loc1 = Location.find(segment["nw_end"])
+  loc2 = Location.find(segment["se_end"])
+  distance = loc1.distance_from(loc2["name"])
+  segment["distance"] = distance
+  p segment
+  segment["time"] = distance * 60
+  if segment["time"] == 0
+    segment["time"] = 1
   end
-  route_achieved = false
-  while possible_routes != []
-    new_possible_routes = []
-    possible_routes.each do |curr_route|
-      nw_nexts = RouteSegment.where(nw_end: curr_route[:tail])
-      se_nexts = RouteSegment.where(se_end: curr_route[:tail])
-      nexts = nw_nexts + se_nexts
-      nexts.each do |next_step|
-        if next_step[:nw_end] === curr_route[:tail]
-          next_tail = next_step[:se_end]
-        else
-          next_tail = next_step[:nw_end]
-        end
-        if next_tail == end_id
-          route_achieved = true
-        end
-        if !curr_route[:route].index(next_step.id) || curr_route[:route].index(next_step.id) < 0
-          updated_route = {route: curr_route[:route] << next_step.id, tail: next_tail}
-          if route_achieved == true
-            return updated_route
-          else
-            new_possible_routes << updated_route
-          end
-        end
-      end
-    end
-    possible_routes = new_possible_routes
-  end
-  # possible_routes
-  return "No route found."
+  segment.save
 end
 
-p find_route(21,20)
+    # p route_segment
+    # if i == 0
+    #   if (Location.find(route_segment.nw_end).lat - Location.find(route_segment.se_end).lat).abs > (Location.find(route_segment.nw_end).lng - Location.find(route_segment.se_end).lng).abs
+    #     unless route_segment.nw_end == RouteSegment.find(Location.find(steps[i+1]).nw_end) || route_segment.nw_end == RouteSegment.find(Location.find(steps[i+1]).se_end)
+    #       if Location.find(route_segment.nw_end).lat - Location.find(route_segment.se_end).lat > 0
+    #         direction = "north"
+    #       else
+    #         direction = "south"
+    #       end
+    #     else
+    #       if Location.find(route_segment.nw_end).lat - Location.find(route_segment.se_end).lat > 0
+    #         direction = "south"
+    #       else
+    #         direction = "north"
+    #       end
+    #     end
+    #   else
+    #     # if !(route_segment.nw_end == RouteSegment.find(Location.find(steps[i+1].nw_end)) || !(route_segment.nw_end == RouteSegment.find(Location.find(steps[i+1]).se_end))
+    #     if i == 1
+    #       if Location.find(route_segment.nw_end).lng - Location.find(route_segment.se_end).lng > 0
+    #         direction = "west"
+    #       else
+    #         direction = "east"
+    #       end
+    #     else
+    #       if Location.find(route_segment.nw_end).lng - Location.find(route_segment.se_end).lng > 0
+    #         direction = "east"
+    #       else
+    #         direction = "west"
+    #       end
+    #     end
+    #   end
+    # else
+    #   if (Location.find(route_segment.nw_end).lat - Location.find(route_segment.se_end).lat).abs > (Location.find(route_segment.nw_end).lng - Location.find(route_segment.se_end).lng).abs
+    #     if route_segment.nw_end == RouteSegment.find(Location.find(steps[i-1]).nw_end) || route_segment.nw_end == RouteSegment.find(Location.find(steps[i-1]).se_end)
+    #       if Location.find(route_segment.nw_end).lat - Location.find(route_segment.se_end).lat > 0
+    #         direction = "north"
+    #       else
+    #         direction = "south"
+    #       end
+    #     else
+    #       if Location.find(route_segment.nw_end).lat - Location.find(route_segment.se_end).lat > 0
+    #         direction = "south"
+    #       else
+    #         direction = "north"
+    #       end
+    #     end
+    #   else
+    #     if route_segment.nw_end == RouteSegment.find(Location(steps[i-1]).nw_end) || route_segment.nw_end == RouteSegment.find(Location.find(steps[i-1]).se_end)
+    #       if Location.find(route_segment.nw_end).lng - Location.find(route_segment.se_end).lng > 0
+    #         direction = "west"
+    #       else
+    #         direction = "east"
+    #       end
+    #     else
+    #       if Location.find(route_segment.nw_end).lng - Location.find(route_segment.se_end).lng > 0
+    #         direction = "east"
+    #       else
+    #         direction = "west"
+    #       end
+    #     end
+    #   end
+    # end
+
+# def give_directions(route)
+#   directions = []
+
+#   i = 0
+#   route.route_steps.each do |step|
+#     route_segment = RouteSegment.find(step)
+#     # direction logic
+#     direction = "east"
+#     ####
+#     road = route_segment.road
+#     distance = route_segment.distance
+#     directions << "Head #{direction} on #{road} for #{distance} leagues"
+#     i += 1
+#   end
+#   directions
+# end
+
+# def find_route(start_id,end_id)
+#   possible_routes = []
+#   directions = []
+#   # starts = RouteSegment.where('nw_end = ? OR se_end = ?',start_id, start_id)
+#   starts = RouteSegment.where(nw_end: start_id).or(RouteSegment.where(se_end: start_id))
+#   starts.each do |start|
+#     if start[:nw_end] == start_id
+#       first_tail = start[:se_end]
+#     else
+#       first_tail = start[:nw_end]
+#     end
+#     if first_tail == end_id
+#       return {route: [start.id], tail: first_tail}
+#     end
+#     possible_routes << {route: [start.id], tail: first_tail}
+#   end
+#   route_achieved = false
+#   while possible_routes != []
+#     new_possible_routes = []
+#     possible_routes.each do |curr_route|
+#       nw_nexts = RouteSegment.where(nw_end: curr_route[:tail])
+#       se_nexts = RouteSegment.where(se_end: curr_route[:tail])
+#       nexts = nw_nexts + se_nexts
+#       nexts.each do |next_step|
+#         if next_step[:nw_end] === curr_route[:tail]
+#           next_tail = next_step[:se_end]
+#         else
+#           next_tail = next_step[:nw_end]
+#         end
+#         if next_tail == end_id
+#           route_achieved = true
+#         end
+#         if !curr_route[:route].index(next_step.id) || curr_route[:route].index(next_step.id) < 0
+#           # p curr_route
+#           updated_route = {route: curr_route[:route] << next_step.id, tail: next_tail}
+#           if route_achieved == true
+#             p "woohoo"
+#             return updated_route
+#           else
+#             new_possible_routes << updated_route
+#             curr_route[:route] = curr_route[:route][0..-2]
+#           end
+#         end
+#       end
+#     end
+#     possible_routes = new_possible_routes
+#   end
+#   # possible_routes
+#   return "No route found."
+# end
+
+# p find_route(27,21)
+
+# RouteSegment.create(nw_end: 35, se_end: 25)
+# RouteSegment.create(nw_end: 25, se_end: 36)
+# RouteSegment.create(nw_end: 36, se_end: 42)
+
+# route = RouteSegment.find(26)
+# route.road = "Bywater Road"
+# route.save
+# route = RouteSegment.find(27)
+# route.road = "Bywater Road"
+# route.save
+# route = RouteSegment.find(28)
+# route.road = "East Road"
+# route.save
+
+# p RouteSegment.find(26).road
+# p RouteSegment.find(27).road
+# p RouteSegment.find(28).road
+
+# location = Location.find(28) # Bagshot Row 3
+# location.update(lat: 34.15413611, lng: -118.1381833)
+# location = Location.find(27) # Bagshot Row 2
+# location.update(lat: 34.154125, lng: -118.1377028)
+# location = Location.find(26) # Bagshot Row 1
+# location.update(lat: 34.15413611, lng: -118.1370528)
+# location = Location.find(21) # Bag End
+# location.update(lat: 34.15555, lng: -118.1370833)
+# location = Location.find(33) # Bywater Bridge
+# location.update(lat: 34.15182222, lng: -118.1369972)
+# location = Location.find(35) # Bywater Road/Hill Lane
+# location.update(lat: 34.15126944, lng: -118.1369111)
+# location = Location.find(42) # The Green Dragon
+# location.update(location_type: "site")
+# location = Location.find(43) # The Green Dragon
+# location.update(name: "East Road/The Causeway")
+
+
+# location = Location.find(31)
+# location.update(name: "Brandywine Bridge")
+# location = Location.find(38)
+# location.update(name: "East Road/South to Longbottom")
+# location = Location.find(42)
+# location.update(name: "East Road/North to Scary")
+# location = Location.find(43)
+# location.update(name: "East Road/The Causeway")
+# location = Location.find(36)
+# location.update(name: "East Road/Bywater Road")
+
+# segment = RouteSegment.find(28)
+# segment.update(se_end: 47)
+# RouteSegment.create(nw_end: 47, se_end: 42, road: "East Road")
