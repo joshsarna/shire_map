@@ -12,6 +12,9 @@ class ApplicationController < ActionController::Base
       else
         first_tail = start[:nw_end]
       end
+      if first_tail == end_id
+        return {route: [start.id], tail: first_tail}
+      end
       possible_routes << {route: [start.id], tail: first_tail}
     end
     route_achieved = false
@@ -31,9 +34,10 @@ class ApplicationController < ActionController::Base
             route_achieved = true
           end
           if !curr_route[:route].index(next_step.id) || curr_route[:route].index(next_step.id) < 0
-            p curr_route
+            # p curr_route
             updated_route = {route: curr_route[:route] << next_step.id, tail: next_tail}
             if route_achieved == true
+              p "woohoo"
               return updated_route
             else
               new_possible_routes << updated_route
