@@ -35,9 +35,9 @@ var MapPage = {
           this.newLocation.lng = (0.00091 * event.clientX - 118.246286);
           console.log(this.newLocation.lat);
           console.log(this.newLocation.lng);
-          axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
-            this.newLocation = {name: ""};
-          }.bind(this));
+          // axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
+            // this.newLocation = {name: ""};
+          // }.bind(this));
         }
       }.bind(this));
       // else
