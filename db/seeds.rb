@@ -91,7 +91,7 @@ segments.each do |segment|
   loc2 = Location.find(segment["se_end"])
   distance = loc1.distance_from(loc2["name"])
   segment["distance"] = distance
-  p segment
+  # p segment
   segment["time"] = distance * 60
   if segment["time"] == 0
     segment["time"] = 1
