@@ -7,6 +7,7 @@ var MapPage = {
       message: "Welcome to Middle Earth!",
       imageUrl: "http://corecanvas.s3.amazonaws.com/theonering-0188db0e/gallery/original/shire_map.jpg",
       newLocation: {
+        id: 0,
         name: "",
         lat: 0,
         lng: 0,
@@ -22,24 +23,31 @@ var MapPage = {
   },
   methods: {
     markThisSpot: function(event) {
-      // console.log("x: " + event.clientX);
-      // console.log("y: " + event.clientY);
+      console.log("x: " + event.clientX);
+      console.log("y: " + event.clientY);
       // console.log(this.newLocation.name);
       // if newLocation.name is the name of a location in this.locations
       this.locations.forEach(function(location) {
         if (location.name === this.newLocation.name) {
-          // console.log(location);
-          // send a patch request to change the coordinates of that location
           this.newLocation = location;
-          this.newLocation.lat = (-0.000137 * event.clientY + 34.213661);
-          this.newLocation.lng = (0.00091 * event.clientX - 118.246286);
-          console.log(this.newLocation.lat);
-          console.log(this.newLocation.lng);
-          // axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
-            // this.newLocation = {name: ""};
-          // }.bind(this));
         }
       }.bind(this));
+      if (this.newLocation.name !== "") {
+        this.newLocation.lat = (-0.000293 * event.clientY + 34.233968);
+        this.newLocation.lng = (0.000401 * event.clientX - 118.251203);
+        console.log("location: " + this.newLocation.name);
+        console.log("lat: " + this.newLocation.lat);
+        console.log("lng: " + this.newLocation.lng);
+      }
+      axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
+        console.log(this.newLocation.name + " has been updated.");
+      }.bind(this));
+      this.newLocation = {
+        name: "",
+        lat: 0,
+        lng: 0,
+        location_type: "site"
+      };
       // else
       // send a post request to create a location at those coordinates with the name of newLocation.name and the location_type of site
       // this.newLocation.lat = (-0.000137 * event.clientY + 34.213661);
