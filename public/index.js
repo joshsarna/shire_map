@@ -38,10 +38,12 @@ var MapPage = {
         console.log("location: " + this.newLocation.name);
         console.log("lat: " + this.newLocation.lat);
         console.log("lng: " + this.newLocation.lng);
+        axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
+          console.log("Location has been updated.");
+        }.bind(this));
+      } else {
+        console.log("Location not found");
       }
-      axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
-        console.log(this.newLocation.name + " has been updated.");
-      }.bind(this));
       this.newLocation = {
         name: "",
         lat: 0,
