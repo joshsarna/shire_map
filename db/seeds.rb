@@ -85,19 +85,19 @@ RouteSegment.create(nw_end: 41, se_end: 30, road: "Unmarked Trail")
 
 
 # to update distances and times based on location coords
-segments = RouteSegment.all
-segments.each do |segment|
-  loc1 = Location.find(segment["nw_end"])
-  loc2 = Location.find(segment["se_end"])
-  distance = loc1.distance_from(loc2["name"])
-  segment["distance"] = distance
-  # p segment
-  segment["time"] = distance * 60
-  if segment["time"] == 0
-    segment["time"] = 1
-  end
-  segment.save
-end
+# segments = RouteSegment.all
+# segments.each do |segment|
+#   loc1 = Location.find(segment["nw_end"])
+#   loc2 = Location.find(segment["se_end"])
+#   distance = loc1.distance_from(loc2["name"])
+#   segment["distance"] = distance
+#   # p segment
+#   segment["time"] = distance * 60
+#   if segment["time"] == 0
+#     segment["time"] = 1
+#   end
+#   segment.save
+# end
 
     # p route_segment
     # if i == 0
