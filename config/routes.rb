@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     patch '/locations/:id' => 'locations#update'
 
     post '/routes' => 'routes#create'
+    get '/routes/last' => 'routes#show'
   end
 end

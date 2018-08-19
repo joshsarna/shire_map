@@ -368,3 +368,10 @@ RouteSegment.create(nw_end: 41, se_end: 30, road: "Unmarked Trail")
 # RouteSegment.create(nw_end: Location.find_by(name: "Pelargir").id, se_end: Location.find_by(name: "Crossings of Poros").id, road: "a road")
 # RouteSegment.create(nw_end: Location.find_by(name: "Erech").id, se_end: Location.find_by(name: "Pelargir").id, road: "a road")
 # RouteSegment.create(nw_end: Location.find_by(name: "Brandywine Bridge").id, se_end: Location.find_by(name: "Bree").id, road: "East Road")
+
+# maps
+Map.create(name: "A Part of the Shire", image_url: "http://corecanvas.s3.amazonaws.com/theonering-0188db0e/gallery/original/shire_map.jpg", level: "tertiary")
+Map.create(name: "Middle Earth", image_url: "http://donsmaps.com/images29/middleearthlargelargerstill.jpg", level: "primary")
+Map.create(name: "Bree", image_url: "https://vignette.wikia.nocookie.net/lotr/images/f/f7/Breemap3.jpg/revision/latest?cb=20160503181050", level: "tertiary")
+Map.create(name: "Bree-land", image_url: "https://ahobbitsjourney.files.wordpress.com/2014/06/bree-land-map-archet-combe-staddle.jpg", level: "secondary")
+# Map.create(name: "", image_url: "", level: "")

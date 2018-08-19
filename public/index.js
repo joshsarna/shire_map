@@ -1,5 +1,23 @@
 /* global Vue, VueRouter, axios */
 
+var route = {
+  template: "#route-page",
+  data: function() {
+    return {
+      message: "Welcome to Middle Earth!",
+      imageUrl: "http://donsmaps.com/images29/middleearthlargelargerstill.jpg",
+      route: {}
+    };
+  },
+  created: function() {
+    axios.get('/api/routes/last').then(function(response) {
+      this.route = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
 var middleEarthMapPage = {
   template: "#map-page",
   data: function() {
@@ -145,6 +163,7 @@ var HomePage = {
       axios.post('/api/routes', parameters).then(function(response) {
         console.log(response.data.directions);
         this.route = response.data;
+        router.push("/route");
       }.bind(this));
     }
   },
@@ -156,7 +175,8 @@ var router = new VueRouter({
     { path: "/", component: HomePage },
     { path: "/map", component: MapPage },
     { path: "/shireMap", component: MapPage },
-    { path: "/middleEarthMap", component: middleEarthMapPage }
+    { path: "/middleEarthMap", component: middleEarthMapPage },
+    { path: "/route", component: route }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

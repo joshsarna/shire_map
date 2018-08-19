@@ -30,4 +30,9 @@ class Api::RoutesController < ApplicationController
     end
     render "show.json.jbuilder"
   end
+
+  def show
+    @route = Route.last
+    render "show.json.jbuilder"
+  end
 end

@@ -48,3 +48,15 @@
 
   </div>
 </template>
+
+<template id="route-page">
+  <div class="vue-component">
+
+    <h1>{{ message }}</h1>
+    <p><a href='/#/map'>Map of the Shire</a></p>
+    <img v-bind:src="imageUrl">
+    <div v-for="direction in route.directions">
+      <p>{{ direction }}</p>
+    </div>
+  </div>
+</template>
