@@ -9,25 +9,22 @@ var route = {
       route: {},
       startLocation: {},
       endLocation: {},
-      mapSet: []
+      mapSet: [],
+      stepLines: []
     };
   },
   created: function() {
     // get the route
     axios.get('/api/routes/last').then(function(response) {
       this.route = response.data;
-      // console.log("ROUTE START: " + response.data.start_location_id);
-      // console.log("ROUTE END: " + response.data.end_location_id);
       // get the start location
       axios.get('/api/locations/' + this.route.start_location_id).then(function(response) {
         this.startLocation = response.data;
+        // get the end location
         axios.get('/api/locations/' + this.route.end_location_id).then(function(response) {
           this.endLocation = response.data;
-          // console.log("start...");
-          // console.log(this.startLocation.id);
-          // console.log("end...");
-          // console.log(this.endLocation.id);
         }.bind(this));
+        // get the correct map (this logic should be moved to the back end)
         axios.get('/api/maps/quaternary').then(function(response) {
           // console.log(response.data);
           this.mapSet = response.data;
@@ -84,9 +81,7 @@ var route = {
           }
         }.bind(this));
       }.bind(this));
-      // get the end location
     }.bind(this));
-    // find a map that includes both start and end locations
   },
   methods: {},
   computed: {}

@@ -55,7 +55,7 @@
     <h1>{{ message }}</h1>
     <p><a href='/#/map'>Map of the Shire</a></p>
     <img v-bind:src="imageUrl">
-    <div v-for="direction in route.directions">
+    <div v-for="direction in route.directions" id="routeDirections">
       <p>{{ direction }}</p>
     </div>
   </div>
