@@ -6,13 +6,62 @@ var route = {
     return {
       message: "Welcome to Middle Earth!",
       imageUrl: "http://donsmaps.com/images29/middleearthlargelargerstill.jpg",
-      route: {}
+      route: {},
+      startLocation: {},
+      endLocation: {},
+      mapSet: []
     };
   },
   created: function() {
+    // get the route
     axios.get('/api/routes/last').then(function(response) {
       this.route = response.data;
+      // console.log("ROUTE START: " + response.data.start_location_id);
+      // console.log("ROUTE END: " + response.data.end_location_id);
+      // get the start location
+      axios.get('/api/locations/' + this.route.start_location_id).then(function(response) {
+        this.startLocation = response.data;
+        axios.get('/api/locations/' + this.route.end_location_id).then(function(response) {
+          this.endLocation = response.data;
+          // console.log("start...");
+          // console.log(this.startLocation.id);
+          // console.log("end...");
+          // console.log(this.endLocation.id);
+        }.bind(this));
+        axios.get('/api/maps/tertiary').then(function(response) {
+          // console.log(response.data);
+          this.mapSet = response.data;
+          for (var i in this.mapSet) {
+            // console.log("boooooooooooop");
+            // console.log("lat_floor " + this.mapSet[i].lat_floor);
+            // console.log("lat_ceiling " + this.mapSet[i].lat_ceiling);
+            // console.log("lng_floor " + this.mapSet[i].lng_floor);
+            // console.log("lng_ceiling " + this.mapSet[i].lng_ceiling);
+            // console.log("start lat " + this.startLocation.lat);
+            // console.log("start lng " + this.startLocation.lng);
+            if (this.startLocation.lat > this.mapSet[i].lat_floor) {
+              // console.log("first test passed");
+              if (this.startLocation.lat < this.mapSet[i].lat_ceiling) {
+                // console.log("second test passed");
+                if (this.startLocation.lng < this.mapSet[i].lng_floor) {
+                  // console.log("third test passed");
+                  if (this.startLocation.lng > this.mapSet[i].lng_ceiling) {
+                    // console.log("fourth test passed");
+                    // console.log(this.mapSet[i].image_url);
+                    this.imageUrl = this.mapSet[i].image_url;
+                    // console.log("NEW IMAGE FOUND");
+                  }
+                }
+              }
+            } else {
+              // console.log("IT DIDN'T FIT");
+            }
+          }
+        }.bind(this));
+      }.bind(this));
+      // get the end location
     }.bind(this));
+    // find a map that includes both start and end locations
   },
   methods: {},
   computed: {}
@@ -56,9 +105,9 @@ var middleEarthMapPage = {
         console.log("location: " + this.newLocation.name);
         console.log("lat: " + this.newLocation.lat);
         console.log("lng: " + this.newLocation.lng);
-        axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
-          console.log("Location has been updated.");
-        }.bind(this));
+        // axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
+        //   console.log("Location has been updated.");
+        // }.bind(this));
       } else {
         console.log("Location not found");
       }
@@ -111,9 +160,9 @@ var MapPage = {
         console.log("location: " + this.newLocation.name);
         console.log("lat: " + this.newLocation.lat);
         console.log("lng: " + this.newLocation.lng);
-        axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
-          console.log("Location has been updated.");
-        }.bind(this));
+        // axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
+        //   console.log("Location has been updated.");
+        // }.bind(this));
       } else {
         console.log("Location not found");
       }

@@ -376,4 +376,6 @@ RouteSegment.create(nw_end: 41, se_end: 30, road: "Unmarked Trail")
 # Map.create(name: "Bree-land", image_url: "https://ahobbitsjourney.files.wordpress.com/2014/06/bree-land-map-archet-combe-staddle.jpg", level: "secondary")
 # Map.create(name: "Eriador", image_url: "https://vignette.wikia.nocookie.net/lotr/images/f/f7/Eriador-map.jpg/revision/latest?cb=20160503175452", level: "secondary")
 # Map.create(name: "Wilderland", image_url: "https://vignette.wikia.nocookie.net/lotr/images/7/7f/MapOfWilderland.jpg/revision/latest?cb=20131225175225", level: "secondary")
+# Map.create(name: "Osgiliath", image_url: "https://i.pinimg.com/originals/b8/93/6a/b8936ae6eedd5c26d4f242d37a2081b9.jpg", level: "tertiary")
+
 # Map.create(name: "", image_url: "", level: "")

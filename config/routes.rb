@@ -9,5 +9,8 @@ Rails.application.routes.draw do
 
     post '/routes' => 'routes#create'
     get '/routes/last' => 'routes#show'
+
+    # get maps of various levels
+    get '/maps/:level' => 'maps#index'
   end
 end
