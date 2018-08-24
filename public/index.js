@@ -5,7 +5,7 @@ var route = {
   data: function() {
     return {
       message: "Welcome to Middle Earth!",
-      imageUrl: "http://donsmaps.com/images29/middleearthlargelargerstill.jpg",
+      imageUrl: "",
       route: {},
       startLocation: {},
       endLocation: {},
@@ -28,7 +28,7 @@ var route = {
           // console.log("end...");
           // console.log(this.endLocation.id);
         }.bind(this));
-        axios.get('/api/maps/tertiary').then(function(response) {
+        axios.get('/api/maps/quaternary').then(function(response) {
           // console.log(response.data);
           this.mapSet = response.data;
           for (var i in this.mapSet) {
@@ -37,6 +37,50 @@ var route = {
             } else {
               console.log("IT DIDN'T FIT");
             }
+          }
+          if (this.imageUrl === "") {
+            // search the next level
+            axios.get('/api/maps/tertiary').then(function(response) {
+              // console.log(response.data);
+              this.mapSet = response.data;
+              for (var i in this.mapSet) {
+                if (this.startLocation.lat > this.mapSet[i].lat_floor && this.startLocation.lat < this.mapSet[i].lat_ceiling && this.startLocation.lng < this.mapSet[i].lng_floor && this.startLocation.lng > this.mapSet[i].lng_ceiling && this.endLocation.lat > this.mapSet[i].lat_floor && this.endLocation.lat < this.mapSet[i].lat_ceiling && this.endLocation.lng < this.mapSet[i].lng_floor && this.endLocation.lng > this.mapSet[i].lng_ceiling) {
+                  this.imageUrl = this.mapSet[i].image_url;
+                } else {
+                  console.log("IT DIDN'T FIT");
+                }
+              }
+              if (this.imageUrl === "") {
+                axios.get('/api/maps/secondary').then(function(response) {
+                  // console.log(response.data);
+                  this.mapSet = response.data;
+                  for (var i in this.mapSet) {
+                    if (this.startLocation.lat > this.mapSet[i].lat_floor && this.startLocation.lat < this.mapSet[i].lat_ceiling && this.startLocation.lng < this.mapSet[i].lng_floor && this.startLocation.lng > this.mapSet[i].lng_ceiling && this.endLocation.lat > this.mapSet[i].lat_floor && this.endLocation.lat < this.mapSet[i].lat_ceiling && this.endLocation.lng < this.mapSet[i].lng_floor && this.endLocation.lng > this.mapSet[i].lng_ceiling) {
+                      this.imageUrl = this.mapSet[i].image_url;
+                    } else {
+                      console.log("IT DIDN'T FIT");
+                    }
+                  }
+                  if (this.imageUrl === "") {
+                    // search the next level
+                    axios.get('/api/maps/primary').then(function(response) {
+                      // console.log(response.data);
+                      this.mapSet = response.data;
+                      for (var i in this.mapSet) {
+                        if (this.startLocation.lat > this.mapSet[i].lat_floor && this.startLocation.lat < this.mapSet[i].lat_ceiling && this.startLocation.lng < this.mapSet[i].lng_floor && this.startLocation.lng > this.mapSet[i].lng_ceiling && this.endLocation.lat > this.mapSet[i].lat_floor && this.endLocation.lat < this.mapSet[i].lat_ceiling && this.endLocation.lng < this.mapSet[i].lng_floor && this.endLocation.lng > this.mapSet[i].lng_ceiling) {
+                          this.imageUrl = this.mapSet[i].image_url;
+                        } else {
+                          console.log("IT DIDN'T FIT");
+                        }
+                      }
+                      if (this.imageUrl === "") {
+                        // search the next level
+                      }
+                    }.bind(this));
+                  }
+                }.bind(this));
+              }
+            }.bind(this));
           }
         }.bind(this));
       }.bind(this));
