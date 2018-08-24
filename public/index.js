@@ -32,29 +32,10 @@ var route = {
           // console.log(response.data);
           this.mapSet = response.data;
           for (var i in this.mapSet) {
-            // console.log("boooooooooooop");
-            // console.log("lat_floor " + this.mapSet[i].lat_floor);
-            // console.log("lat_ceiling " + this.mapSet[i].lat_ceiling);
-            // console.log("lng_floor " + this.mapSet[i].lng_floor);
-            // console.log("lng_ceiling " + this.mapSet[i].lng_ceiling);
-            // console.log("start lat " + this.startLocation.lat);
-            // console.log("start lng " + this.startLocation.lng);
-            if (this.startLocation.lat > this.mapSet[i].lat_floor) {
-              // console.log("first test passed");
-              if (this.startLocation.lat < this.mapSet[i].lat_ceiling) {
-                // console.log("second test passed");
-                if (this.startLocation.lng < this.mapSet[i].lng_floor) {
-                  // console.log("third test passed");
-                  if (this.startLocation.lng > this.mapSet[i].lng_ceiling) {
-                    // console.log("fourth test passed");
-                    // console.log(this.mapSet[i].image_url);
-                    this.imageUrl = this.mapSet[i].image_url;
-                    // console.log("NEW IMAGE FOUND");
-                  }
-                }
-              }
+            if (this.startLocation.lat > this.mapSet[i].lat_floor && this.startLocation.lat < this.mapSet[i].lat_ceiling && this.startLocation.lng < this.mapSet[i].lng_floor && this.startLocation.lng > this.mapSet[i].lng_ceiling && this.endLocation.lat > this.mapSet[i].lat_floor && this.endLocation.lat < this.mapSet[i].lat_ceiling && this.endLocation.lng < this.mapSet[i].lng_floor && this.endLocation.lng > this.mapSet[i].lng_ceiling) {
+              this.imageUrl = this.mapSet[i].image_url;
             } else {
-              // console.log("IT DIDN'T FIT");
+              console.log("IT DIDN'T FIT");
             }
           }
         }.bind(this));
