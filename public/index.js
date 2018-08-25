@@ -10,6 +10,7 @@ var route = {
       startLocation: {},
       endLocation: {},
       mapSet: [],
+      // http://www.c-point.com/javascript_vector_draw.htm to draw lines
       stepLines: []
     };
   },
