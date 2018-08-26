@@ -10,8 +10,10 @@ var route = {
       startLocation: {},
       endLocation: {},
       mapSet: [],
-      // http://www.c-point.com/javascript_vector_draw.htm to draw lines
-      stepLines: []
+      stepLines: [],
+      time: 0,
+      hours: 0,
+      minutes: 0
     };
   },
   created: function() {
@@ -20,6 +22,14 @@ var route = {
       console.log(response.data);
       this.route = response.data;
       this.imageUrl = this.route.map.image_url;
+
+      // travel time
+      this.time = this.route.time;
+      console.log(this.time);
+      console.log(this.time - Math.floor(this.time / 60) * 60);
+      this.hours = Math.floor(this.time / 60);
+      this.minutes = this.time - this.hours * 60;
+
       let routeStuff = document.createElement('script'); routeStuff.setAttribute('src',"route.js");
       document.body.appendChild(routeStuff);
     }.bind(this));

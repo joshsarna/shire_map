@@ -8,3 +8,4 @@ json.directions @route.give_directions
 json.route_xs @route.route_xs
 json.route_ys @route.route_ys
 json.map @route.map
+json.time @route.time

@@ -18,10 +18,10 @@ var jg = new jsGraphics("Canvas");    // Use the "Canvas" div for drawing
 
 axios.get('api/routes/last').then(function(response) {
   var xs = [];
-  console.log("got it");
-  console.log(response.data.route_xs);
+  // console.log("got it");
+  // console.log(response.data.route_xs);
   xs = response.data.route_xs;
-  console.log("xs: " + xs);
+  // console.log("xs: " + xs);
   var latFloor = response.data.map.lat_floor;
   var latCeiling = response.data.map.lat_ceiling;
   var lngFloor = response.data.map.lng_floor;
@@ -31,14 +31,14 @@ axios.get('api/routes/last').then(function(response) {
   for (var i in xs) {
     xs[i] = Math.abs( xs[i] - (lngFloor) ) / Math.abs( lngFloor - lngCeiling ) * imageWidth;
   }
-  console.log("new xs: " + xs);
+  // console.log("new xs: " + xs);
   var ys = [];
   ys = response.data.route_ys;
-  console.log("ys: " + ys);
+  // console.log("ys: " + ys);
   for (var i2 in ys) {
     ys[i2] = 95 + Math.abs( ys[i2] - (latCeiling) ) / ( latCeiling - latFloor ) * imageHeight;
   }
-  console.log("new ys: " + ys);
+  // console.log("new ys: " + ys);
   var jg = new jsGraphics("Canvas");
   jg.setColor("blue");
   jg.setStroke(3);
@@ -46,6 +46,6 @@ axios.get('api/routes/last').then(function(response) {
   jg.paint();
 });
 
-console.log("image url: " + this.imageUrl);
+// console.log("image url: " + this.imageUrl);
 
 // change hardcoded things to be variables; variables can be hardcoded for now

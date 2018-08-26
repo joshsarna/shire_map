@@ -53,6 +53,9 @@ class Route < ApplicationRecord
       end
       i += 1
     end
+    # directions.each do |next_direction|
+    #   if 
+    # end
     directions
   end
 
@@ -96,5 +99,13 @@ class Route < ApplicationRecord
       end
       i += 1
     end
+  end
+
+  def time
+    total_time = 0
+    route_steps.each do |step|
+      total_time += RouteSegment.find(step.route_segment_id).time
+    end
+    total_time
   end
 end
