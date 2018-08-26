@@ -379,3 +379,18 @@ RouteSegment.create(nw_end: 41, se_end: 30, road: "Unmarked Trail")
 # Map.create(name: "Osgiliath", image_url: "https://i.pinimg.com/originals/b8/93/6a/b8936ae6eedd5c26d4f242d37a2081b9.jpg", level: "tertiary")
 
 # Map.create(name: "", image_url: "", level: "")
+
+map = Map.first
+map.height = 478
+map.width = 807
+map.save
+
+map = Map.second
+map.height = 605
+map.width = 807
+map.save
+
+# map = Map.third
+# map.height = 
+# map.width = 
+# map.save
