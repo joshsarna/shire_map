@@ -83,6 +83,8 @@ var route = {
         }.bind(this));
       }.bind(this));
     }.bind(this));
+    let routeStuff = document.createElement('script');    routeStuff.setAttribute('src',"route.js");
+    document.body.appendChild(routeStuff);
   },
   methods: {},
   computed: {}

@@ -12,29 +12,14 @@
   <style type="text/css">
     img {
       width: 100%;
+      opacity: 0.75;
     }
   </style>
 </head>
 <body>
   <div id="vue-app">
-    <div id="Canvas" style="position:relative;height:500px;width:500px;">
-      <script type="text/javascript">
-        // Call jsGraphics() with no parameters if drawing within the entire document 
-        var jg = new jsGraphics("Canvas");    // Use the "Canvas" div for drawing 
-        jg.setColor("maroon");
-        jg.fillEllipse(450, -5, 40, 70); 
-        jg.setStroke(1);
-        jg.setColor("#ff6666");
-        jg.drawPolyline(new Array(90, 640, 90), new Array(0, 25, 90));
-        jg.setColor("green");
-        jg.drawRect(100,40,200,18);
-        jg.setColor("blue");
-        jg.setStroke(Stroke.DOTTED); 
-        jg.drawRect(-20,0,32,50);
-        jg.drawEllipse(250,10,100,100);
-        jg.paint();
-      </script>
-      <p>Inside the "Canvas" div</p>
+    <div id="Canvas" style="position:relative;height:100%;width:100%;">
+
       <router-view></router-view>
     </div>
 
@@ -74,7 +59,9 @@
 
     <h1>{{ message }}</h1>
     <p><a href='/#/map'>Map of the Shire</a></p>
-    <img v-bind:src="imageUrl">
+     <div>
+      <img v-bind:src="imageUrl" id="Canvas" style="position:relative;height:100%;width:100%;">
+    </div>
     <div v-for="direction in route.directions" id="routeDirections">
       <p>{{ direction }}</p>
     </div>

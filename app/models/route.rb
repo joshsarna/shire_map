@@ -55,4 +55,28 @@ class Route < ApplicationRecord
     end
     directions
   end
+
+  def route_xs
+    lngs = []
+    route_steps.each do |step|
+      route_segment = RouteSegment.find(step.route_segment_id)
+      nw_end = Location.find(route_segment.nw_end)
+      se_end = Location.find(route_segment.se_end)
+      lngs << nw_end.lng
+      lngs << se_end.lng
+    end
+    lngs
+  end
+
+  def route_ys
+    lngs = []
+    route_steps.each do |step|
+      route_segment = RouteSegment.find(step.route_segment_id)
+      nw_end = Location.find(route_segment.nw_end)
+      se_end = Location.find(route_segment.se_end)
+      lngs << nw_end.lat
+      lngs << se_end.lat
+    end
+    lngs
+  end
 end
