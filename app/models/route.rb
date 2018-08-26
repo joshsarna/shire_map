@@ -53,9 +53,14 @@ class Route < ApplicationRecord
       end
       i += 1
     end
-    # directions.each do |next_direction|
-    #   if 
-    # end
+    directions.each do |next_direction|
+      if next_direction[-11..-9] == "0.0"
+        next_direction[-11..-1] = "a ways"
+      end
+      if next_direction[-11] == "0"
+        next_direction[-11..-1] = "#{(next_direction[-11..-9].to_f * 3).round(1)} miles"
+      end
+    end
     directions
   end
 
