@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My App</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script type="text/javascript" src="wz_jsgraphics.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.js"></script>
+  <script src="index.js" defer></script>
+  <style type="text/css">
+    img {
+      width: 100%;
+      opacity: 0.75;
+    }
+  </style>
+</head>
+<body>
+  <div id="vue-app">
+    <div id="Canvas" style="position:relative;height:100%;width:100%;">
+
+      <router-view></router-view>
+    </div>
+
+  </div>
+</body>
+</html>
+
+<template id="home-page">
+  <div class="vue-component">
+
+    <h1>{{ message }}</h1>
+    <p><a href='/#/map'>Map of the Shire</a></p>
+    <p>Find a Route</p>
+    <p>From: <input v-model="newRoute.startLocationId"></p>
+    <p>To: <input v-model="newRoute.endLocationId"></p>
+    <p><button v-on:click="makeRoute()">Find Route</button></p>
+    Route:
+    <div v-for="direction in route.directions">
+      <p>{{ direction }}</p>
+    </div>
+
+  </div>
+</template>
+
+<template id="map-page">
+  <div class="vue-component">
+
+    <h1>{{ message }}</h1>
+    <p><input v-model="newLocation.name"></p>
+    <img v-bind:src="imageUrl" v-on:click="markThisSpot($event)">
+
+  </div>
+</template>
+
+<template id="route-page">
+  <div class="vue-component">
+
+    <h1>{{ message }}</h1>
+    <p><a href='/#/map'>Map of the Shire</a></p>
+     <div>
+      <img v-bind:src="imageUrl" id="Canvas" style="position:relative;height:100%;width:100%;">
+    </div>
+    <div v-for="direction in route.directions" id="routeDirections">
+      <p>{{ direction }}</p>
+    </div>
+    <div>
+      Total Time: {{ hours }} hours, {{ minutes }} minutes
+    </div>
+  </div>
+</template>
