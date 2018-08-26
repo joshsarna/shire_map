@@ -4,7 +4,7 @@ var route = {
   template: "#route-page",
   data: function() {
     return {
-      message: "Welcome to Middle Earth!",
+      message: "It's a dangerous business, Frodo, going out your door. You step onto the road, and if you don't keep your feet, there's no knowing where you might be swept off to.\" ~ Bilbo Baggins",
       imageUrl: "",
       route: {},
       startLocation: {},
@@ -35,6 +35,61 @@ var route = {
     }.bind(this));
   },
   methods: {},
+  computed: {}
+};
+
+var BeleriandMapPage = {
+  template: "#map-page",
+  data: function() {
+    return {
+      message: "",
+      imageUrl: "images/Beleriand.jpg",
+      newLocation: {
+        id: 0,
+        name: "",
+        lat: 0,
+        lng: 0,
+        location_type: "site"
+      },
+      locations: []
+    };
+  },
+  created: function() {
+    axios.get('/api/locations').then(function(response) {
+      this.locations = response.data;
+    }.bind(this));
+  },
+  methods: {
+    markThisSpot: function(event) {
+      console.log("x: " + event.clientX);
+      console.log("y: " + event.clientY);
+      // console.log(this.newLocation.name);
+      // if newLocation.name is the name of a location in this.locations
+      this.locations.forEach(function(location) {
+        if (location.name === this.newLocation.name) {
+          this.newLocation = location;
+        }
+      }.bind(this));
+      if (this.newLocation.name !== "") {
+        this.newLocation.lat = (-0.005667 * event.clientY + 35.608117);
+        this.newLocation.lng = (0.018101 * event.clientX - 122.185221);
+        console.log("location: " + this.newLocation.name);
+        console.log("lat: " + this.newLocation.lat);
+        console.log("lng: " + this.newLocation.lng);
+        // axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
+        //   console.log("Location has been updated.");
+        // }.bind(this));
+      } else {
+        console.log("Location not found");
+      }
+      this.newLocation = {
+        name: "",
+        lat: 0,
+        lng: 0,
+        location_type: "site"
+      };
+    }
+  },
   computed: {}
 };
 
@@ -164,7 +219,7 @@ var HomePage = {
   template: "#home-page",
   data: function() {
     return {
-      message: "Welcome to Middle Earth!",
+      message: "\"It's a dangerous business, [...] going out your door. You step onto the road, and if you don't keep your feet, there's no knowing where you might be swept off to.\" ~Bilbo Baggins",
       newRoute: {
         startLocationId: "",
         endLocationId: ""
@@ -196,6 +251,7 @@ var router = new VueRouter({
     { path: "/map", component: MapPage },
     { path: "/shireMap", component: MapPage },
     { path: "/middleEarthMap", component: middleEarthMapPage },
+    { path: "/mapOfBeleriand", component: BeleriandMapPage },
     { path: "/route", component: route }
   ],
   scrollBehavior: function(to, from, savedPosition) {

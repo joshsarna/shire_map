@@ -27,11 +27,11 @@ Licence URI: http://www.os-templates.com/template-terms
 <body id="top">
   <div id="vue-app">
     <!-- Top Background Image Wrapper -->
-    <div class="bgded overlay" style="background-image:url('images/demo/backgrounds/01.png');"> 
+    <div class="bgded overlay" style="background-image:url('');"> 
       <div class="wrapper row1">
         <header id="header" class="hoc clear"> 
           <div id="logo" class="fl_left">
-            <h1><a href="index.html">Preevent</a></h1>
+            <h1><a href="index.html">Middle Maps</a></h1>
           </div>
           <nav id="mainav" class="fl_right">
             <ul class="clear">
@@ -153,20 +153,22 @@ Licence URI: http://www.os-templates.com/template-terms
 
 <template id="home-page">
   <div>
-    <div class="bgded overlay" style="background-image:url('images/demo/backgrounds/01.png');"> 
+    <!-- HEADER -->
+    <div class="bgded overlay" style="background-image:url('http://donsmaps.com/images29/middleearthlargelargerstill.jpg');"> 
       <article id="pageintro" class="hoc clear"> 
             <h2 class="heading">Explore Middle Earth</h2>
             <div class="txtwrap">
               <p>{{ message }}</p>
               <footer>
                 <ul class="nospace inline pushright">
-                  <li><a class="btn" href="#">Posuere</a></li>
-                  <li><a class="btn inverse" href="#">Porttitor</a></li>
+                  <li><a class="btn" href="/#/middleEarthMap">Map of Middle Earth</a></li>
+                  <li><a class="btn inverse" href="/#/MapOfBeleriand">Map of Beleriand that was</a></li>
                 </ul>
               </footer>
             </div>
       </article>
     </div>
+    <!-- ROUTE FINDER -->
     <div class="wrapper row3">
       <main class="hoc container clear"> 
         <!-- main body -->
@@ -201,6 +203,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <div class="clear"></div>
       </main>
     </div>
+    <!-- 3 CARDS -->
     <div class="wrapper bgded overlay light" style="background-image:url('images/demo/backgrounds/02.png');">
       <div class="hoc container clear"> 
         <div class="group element">
@@ -232,6 +235,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <div class="clear"></div>
       </div>
     </div>
+    <!-- SPOTLIGHT? -->
     <div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/03.png')">
       <div class="hoc container clear"> 
         <section class="one_half first"> 
@@ -268,6 +272,7 @@ Licence URI: http://www.os-templates.com/template-terms
       </div>
       <div class="clear"></div>
     </div>
+    <!-- THE TEAM -->
     <div class="wrapper row3">
       <section class="hoc container clear"> 
         <div class="sectiontitle center">
@@ -321,5 +326,15 @@ Licence URI: http://www.os-templates.com/template-terms
     <div>
       Total Time: {{ hours }} hours, {{ minutes }} minutes
     </div>
+  </div>
+</template>
+
+<template id="map-page">
+  <div class="vue-component">
+
+    <h1>{{ message }}</h1>
+    <p><input v-model="newLocation.name"></p>
+    <img v-bind:src="imageUrl">
+
   </div>
 </template>
