@@ -41,3 +41,5 @@ axios.get('api/routes/last').then(function(response) {
     jg.paint();
   });
 });
+
+console.log("image url: " + this.imageUrl);

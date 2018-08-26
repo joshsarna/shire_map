@@ -17,74 +17,12 @@ var route = {
   created: function() {
     // get the route
     axios.get('/api/routes/last').then(function(response) {
+      console.log(response.data);
       this.route = response.data;
-      // get the start location
-      axios.get('/api/locations/' + this.route.start_location_id).then(function(response) {
-        this.startLocation = response.data;
-        // get the end location
-        axios.get('/api/locations/' + this.route.end_location_id).then(function(response) {
-          this.endLocation = response.data;
-        }.bind(this));
-        // get the correct map (this logic should be moved to the back end)
-        axios.get('/api/maps/quaternary').then(function(response) {
-          // console.log(response.data);
-          this.mapSet = response.data;
-          for (var i in this.mapSet) {
-            if (this.startLocation.lat > this.mapSet[i].lat_floor && this.startLocation.lat < this.mapSet[i].lat_ceiling && this.startLocation.lng < this.mapSet[i].lng_floor && this.startLocation.lng > this.mapSet[i].lng_ceiling && this.endLocation.lat > this.mapSet[i].lat_floor && this.endLocation.lat < this.mapSet[i].lat_ceiling && this.endLocation.lng < this.mapSet[i].lng_floor && this.endLocation.lng > this.mapSet[i].lng_ceiling) {
-              this.imageUrl = this.mapSet[i].image_url;
-            } else {
-              console.log("IT DIDN'T FIT");
-            }
-          }
-          if (this.imageUrl === "") {
-            // search the next level
-            axios.get('/api/maps/tertiary').then(function(response) {
-              // console.log(response.data);
-              this.mapSet = response.data;
-              for (var i in this.mapSet) {
-                if (this.startLocation.lat > this.mapSet[i].lat_floor && this.startLocation.lat < this.mapSet[i].lat_ceiling && this.startLocation.lng < this.mapSet[i].lng_floor && this.startLocation.lng > this.mapSet[i].lng_ceiling && this.endLocation.lat > this.mapSet[i].lat_floor && this.endLocation.lat < this.mapSet[i].lat_ceiling && this.endLocation.lng < this.mapSet[i].lng_floor && this.endLocation.lng > this.mapSet[i].lng_ceiling) {
-                  this.imageUrl = this.mapSet[i].image_url;
-                } else {
-                  console.log("IT DIDN'T FIT");
-                }
-              }
-              if (this.imageUrl === "") {
-                axios.get('/api/maps/secondary').then(function(response) {
-                  // console.log(response.data);
-                  this.mapSet = response.data;
-                  for (var i in this.mapSet) {
-                    if (this.startLocation.lat > this.mapSet[i].lat_floor && this.startLocation.lat < this.mapSet[i].lat_ceiling && this.startLocation.lng < this.mapSet[i].lng_floor && this.startLocation.lng > this.mapSet[i].lng_ceiling && this.endLocation.lat > this.mapSet[i].lat_floor && this.endLocation.lat < this.mapSet[i].lat_ceiling && this.endLocation.lng < this.mapSet[i].lng_floor && this.endLocation.lng > this.mapSet[i].lng_ceiling) {
-                      this.imageUrl = this.mapSet[i].image_url;
-                    } else {
-                      console.log("IT DIDN'T FIT");
-                    }
-                  }
-                  if (this.imageUrl === "") {
-                    // search the next level
-                    axios.get('/api/maps/primary').then(function(response) {
-                      // console.log(response.data);
-                      this.mapSet = response.data;
-                      for (var i in this.mapSet) {
-                        if (this.startLocation.lat > this.mapSet[i].lat_floor && this.startLocation.lat < this.mapSet[i].lat_ceiling && this.startLocation.lng < this.mapSet[i].lng_floor && this.startLocation.lng > this.mapSet[i].lng_ceiling && this.endLocation.lat > this.mapSet[i].lat_floor && this.endLocation.lat < this.mapSet[i].lat_ceiling && this.endLocation.lng < this.mapSet[i].lng_floor && this.endLocation.lng > this.mapSet[i].lng_ceiling) {
-                          this.imageUrl = this.mapSet[i].image_url;
-                        } else {
-                          console.log("IT DIDN'T FIT");
-                        }
-                      }
-                      if (this.imageUrl === "") {
-                        // search the next level
-                      }
-                    }.bind(this));
-                  }
-                }.bind(this));
-              }
-            }.bind(this));
-          }
-        }.bind(this));
-      }.bind(this));
+      this.imageUrl = this.route.map.image_url;
+      let routeStuff = document.createElement('script'); routeStuff.setAttribute('src',"route.js");
+      document.body.appendChild(routeStuff);
     }.bind(this));
-    let routeStuff = document.createElement('script');    routeStuff.setAttribute('src',"route.js");
-    document.body.appendChild(routeStuff);
   },
   methods: {},
   computed: {}

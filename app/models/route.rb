@@ -79,4 +79,22 @@ class Route < ApplicationRecord
     end
     lngs
   end
+
+  def map
+    start_location = Location.find(start_location_id)
+    end_location = Location.find(end_location_id)
+    levels = ["quaternary", "tertiary", "secondary", "primary"]
+    i = 0
+    map_found = false
+    while !map_found # this will always be true
+      map_set = Map.where(level: levels[i])
+      map_set.each do |map|
+        if start_location.lat > map.lat_floor && start_location.lng > map.lng_floor && end_location.lat > map.lat_floor && end_location.lng > map.lng_floor && start_location.lat < map.lat_ceiling && start_location.lng < map.lng_ceiling && end_location.lat < map.lat_ceiling && end_location.lng < map.lng_ceiling
+          return map
+          map_found = true
+        end
+      end
+      i += 1
+    end
+  end
 end
