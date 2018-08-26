@@ -1,3 +1,5 @@
+/* global axios, jsGraphics */
+
 // Call jsGraphics() with no parameters if drawing within the entire document 
 var jg = new jsGraphics("Canvas");    // Use the "Canvas" div for drawing 
 // jg.setColor("maroon");
@@ -14,32 +16,36 @@ var jg = new jsGraphics("Canvas");    // Use the "Canvas" div for drawing
 // jg.setColor("blue");
 // jg.drawPolyline(new Array(90, 640, 90), new Array(0, 25, 90));
 
-var xs = [];
 axios.get('api/routes/last').then(function(response) {
+  var xs = [];
   console.log("got it");
   console.log(response.data.route_xs);
   xs = response.data.route_xs;
   console.log("xs: " + xs);
+  var latFloor = response.data.map.lat_floor;
+  var latCeiling = response.data.map.lat_ceiling;
+  var lngFloor = response.data.map.lng_floor;
+  var lngCeiling = response.data.map.lng_ceiling;
+  var imageHeight = response.data.map.height * 0.96;
+  var imageWidth = response.data.map.width * 0.96;
   for (var i in xs) {
-    xs[i] = ( xs[i] - (-118.245188) ) / ( 118.245188 - 117.93321 ) * 775;
+    xs[i] = Math.abs( xs[i] - (lngFloor) ) / Math.abs( lngFloor - lngCeiling ) * imageWidth;
   }
   console.log("new xs: " + xs);
   var ys = [];
-  axios.get('api/routes/last').then(function(response) {
-    // console.log("got it");
-    console.log(response.data.route_ys);
-    ys = response.data.route_ys;
-    console.log("ys: " + ys);
-    for (var i in ys) {
-      ys[i] = 525 - ( ys[i] - (34.064907) ) / ( 34.197343 - 34.064907 ) * 410;
-    }
-    console.log("new ys: " + ys);
-    var jg = new jsGraphics("Canvas");
-    jg.setColor("blue");
-    jg.setStroke(3);
-    jg.drawPolyline(xs, ys);
-    jg.paint();
-  });
+  ys = response.data.route_ys;
+  console.log("ys: " + ys);
+  for (var i2 in ys) {
+    ys[i2] = 95 + Math.abs( ys[i2] - (latCeiling) ) / ( latCeiling - latFloor ) * imageHeight;
+  }
+  console.log("new ys: " + ys);
+  var jg = new jsGraphics("Canvas");
+  jg.setColor("blue");
+  jg.setStroke(3);
+  jg.drawPolyline(xs, ys);
+  jg.paint();
 });
 
 console.log("image url: " + this.imageUrl);
+
+// change hardcoded things to be variables; variables can be hardcoded for now
