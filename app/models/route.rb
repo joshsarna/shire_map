@@ -42,11 +42,11 @@ class Route < ApplicationRecord
       end
       ####
       road = route_segment.road
-      distance = route_segment.distance
+      distance = route_segment.distance.round(1)
       text = "Head #{direction} on #{road} for #{distance} leagues"
       if directions[0] && text[0..16] == directions[-1][0..16]
         # combine
-        distance += RouteSegment.find(route_steps[i-1].route_segment_id).distance
+        distance += RouteSegment.find(route_steps[i-1].route_segment_id).distance.round(1)
         directions[-1] = "Head #{direction} on #{road} for #{distance} leagues"
       else
         directions << text
