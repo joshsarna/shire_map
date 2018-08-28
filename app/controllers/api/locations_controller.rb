@@ -1,6 +1,6 @@
 class Api::LocationsController < ApplicationController
   def index
-    @locations = Location.all
+    @locations = Location.where(location_type: "site")
     render "index.json.jbuilder"
   end
 
