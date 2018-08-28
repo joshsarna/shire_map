@@ -4,6 +4,7 @@ var noRoute = {
   template: "#home-page",
   data: function() {
     return {
+      locations: [],
       mainMessage: "No Route Found",
       message: "\"There's [really] no knowing where you might be swept off to.\" ~ Bilbo Baggins",
       newRoute: {
@@ -13,7 +14,11 @@ var noRoute = {
       route: {}
     };
   },
-  created: function() {},
+  created: function() {
+    axios.get('/api/locations').then(function(response) {
+      this.locations = response.data;
+    }.bind(this));
+  },
   methods: {
     makeRoute: function() {
       console.log(this.newRoute);
