@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get '/locations/:id' => 'locations#show'
     patch '/locations/:id' => 'locations#update'
 
+    get '/synonyms' => 'synonyms#index'
+
     post '/routes' => 'routes#create'
     get '/routes/last' => 'routes#show'
 

@@ -29,6 +29,7 @@ var noRoute = {
   data: function() {
     return {
       locations: [],
+      synonyms: [],
       mainMessage: "No Route Found",
       message: "\"There's [really] no knowing where you might be swept off to.\" ~ Bilbo Baggins",
       newRoute: {
@@ -41,6 +42,9 @@ var noRoute = {
   created: function() {
     axios.get('/api/locations').then(function(response) {
       this.locations = response.data;
+    }.bind(this));
+    axios.get('/api/synonyms').then(function(response) {
+      this.synonyms = response.data;
     }.bind(this));
   },
   methods: {
@@ -282,6 +286,7 @@ var HomePage = {
   data: function() {
     return {
       locations: [],
+      synonyms: [],
       mainMessage: "Explore Middle Earth",
       message: "\"It's a dangerous business, [...] going out your door. You step onto the road, and if you don't keep your feet, there's no knowing where you might be swept off to.\" ~Bilbo Baggins",
       newRoute: {
@@ -294,6 +299,10 @@ var HomePage = {
   created: function() {
     axios.get('/api/locations').then(function(response) {
       this.locations = response.data;
+    }.bind(this));
+    // axios request to get synonyms
+    axios.get('/api/synonyms').then(function(response) {
+      this.synonyms = response.data;
     }.bind(this));
   },
   methods: {

@@ -196,6 +196,9 @@ Licence URI: http://www.os-templates.com/template-terms
                   <option v-for="location in locations">
                     {{ location.name }}
                   </option>
+                  <option v-for="synonym in synonyms">
+                    {{ synonym.name }}
+                  </option>
                 </datalist>
                 <p><a class="btn" v-on:click="makeRoute()">Find Route</a></p>
             </article>

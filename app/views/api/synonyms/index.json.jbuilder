@@ -1,0 +1,1 @@
+json.array! @synonyms, partial: 'synonym', as: :synonym
