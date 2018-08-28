@@ -65,7 +65,8 @@ class Route < ApplicationRecord
   end
 
   def route_xs
-    lngs = []
+    lngs = Set.new([])
+    lngs << Location.find(start_location_id).lng
     route_steps.each do |step|
       route_segment = RouteSegment.find(step.route_segment_id)
       nw_end = Location.find(route_segment.nw_end)
@@ -77,15 +78,16 @@ class Route < ApplicationRecord
   end
 
   def route_ys
-    lngs = []
+    lats = Set.new([])
+    lats << Location.find(start_location_id).lat
     route_steps.each do |step|
       route_segment = RouteSegment.find(step.route_segment_id)
       nw_end = Location.find(route_segment.nw_end)
       se_end = Location.find(route_segment.se_end)
-      lngs << nw_end.lat
-      lngs << se_end.lat
+      lats << nw_end.lat
+      lats << se_end.lat
     end
-    lngs
+    lats
   end
 
   def map
