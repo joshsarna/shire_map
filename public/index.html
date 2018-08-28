@@ -323,15 +323,13 @@ Licence URI: http://www.os-templates.com/template-terms
 
 <template id="route-page">
   <div class="vue-component">
-    <div class="bgded overlay"> 
-    </div>
     <div>
       <img v-bind:src="imageUrl" id="Canvas" style="position:relative;">
+        Total Time: {{ hours }} hours, {{ minutes }} minutes
       <div v-for="direction in route.directions" id="routeDirections">
         <p>{{ direction }}</p>
       </div>
       <div>
-        Total Time: {{ hours }} hours, {{ minutes }} minutes
       </div>
     </div>
   </div>
