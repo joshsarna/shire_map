@@ -8,18 +8,19 @@ Licence URI: http://www.os-templates.com/template-terms
 -->
 <html>
 <head>
-  <title>Preevent</title>
+  <title>Explore Middle Earth</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://unpkg.com/vue2-filters/dist/vue2-filters.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.js"></script>
   <script src="index.js" defer></script>
   <script type="text/javascript" src="wz_jsgraphics.js"></script>
   <style type="text/css">
     img {
-      width: 100%;
+      width: 807px;
       opacity: 1;
     }
   </style>
@@ -31,9 +32,9 @@ Licence URI: http://www.os-templates.com/template-terms
       <div class="wrapper row1">
         <header id="header" class="hoc clear"> 
           <div id="logo" class="fl_left">
-            <h1><a href="index.html">Middle Maps</a></h1>
+            <h1><a href="/#/">Middle Maps</a></h1>
           </div>
-          <nav id="mainav" class="fl_right">
+          <!-- <nav id="mainav" class="fl_right">
             <ul class="clear">
               <li class="active"><a href="index.html">Home</a></li>
               <li><a class="drop" href="#">Pages</a>
@@ -61,7 +62,7 @@ Licence URI: http://www.os-templates.com/template-terms
               <li><a href="#">Link Text</a></li>
               <li><a href="#">Link Text</a></li>
             </ul>
-          </nav>
+          </nav> -->
         </header>
       </div>
     </div>
@@ -154,18 +155,18 @@ Licence URI: http://www.os-templates.com/template-terms
 <template id="home-page">
   <div>
     <!-- HEADER -->
-    <div class="bgded overlay" style="background-image:url('http://donsmaps.com/images29/middleearthlargelargerstill.jpg');"> 
+    <div class="bgded overlay" style="background-image:url('http://donsmaps.com/images29/middleearthlargelargerstill.jpg');height:100%;width:100%"> 
       <article id="pageintro" class="hoc clear"> 
-            <h2 class="heading">Explore Middle Earth</h2>
-            <div class="txtwrap">
-              <p>{{ message }}</p>
-              <footer>
-                <ul class="nospace inline pushright">
-                  <li><a class="btn" href="/#/middleEarthMap">Map of Middle Earth</a></li>
-                  <li><a class="btn inverse" href="/#/MapOfBeleriand">Map of Beleriand that was</a></li>
-                </ul>
-              </footer>
-            </div>
+        <h2 class="heading">{{ mainMessage }}</h2>
+        <div class="txtwrap">
+          <p>{{ message }}</p>
+          <footer>
+            <ul class="nospace inline pushright">
+              <li><a class="btn inverse" href="/#/middleEarthMap">Map of Middle Earth</a></li>
+              <li><a class="btn inverse" href="/#/MapOfBeleriand">Worldview, in the Third Age</a></li>
+            </ul>
+          </footer>
+        </div>
       </article>
     </div>
     <!-- ROUTE FINDER -->
@@ -179,8 +180,13 @@ Licence URI: http://www.os-templates.com/template-terms
           <li class="one_third first">
             <article><i class="fa fa-clock-o"></i>
               <h6 class="heading">Find a Route</h6>
-                <p>From: <input v-model="newRoute.startLocationId"></p>
-                <p>To: <input v-model="newRoute.endLocationId"></p>
+                <p>From: <input v-model="newRoute.startLocationId" list="locations"></p>
+                <p>To: <input v-model="newRoute.endLocationId" list="locations"></p>
+                <datalist id="locations">
+                  <option v-for="location in locations">
+                    {{ location.name }}
+                  </option>
+                </datalist>
                 <p><a class="btn" v-on:click="makeRoute()">Find Route</a></p>
             </article>
           </li>
@@ -204,7 +210,7 @@ Licence URI: http://www.os-templates.com/template-terms
       </main>
     </div>
     <!-- 3 CARDS -->
-    <div class="wrapper bgded overlay light" style="background-image:url('images/demo/backgrounds/02.png');">
+    <!-- <div class="wrapper bgded overlay light" style="background-image:url('images/demo/backgrounds/02.png');">
       <div class="hoc container clear"> 
         <div class="group element">
           <article class="one_third first"> 
@@ -234,9 +240,9 @@ Licence URI: http://www.os-templates.com/template-terms
         </div>
         <div class="clear"></div>
       </div>
-    </div>
+    </div> -->
     <!-- SPOTLIGHT? -->
-    <div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/03.png')">
+    <!-- <div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/03.png')">
       <div class="hoc container clear"> 
         <section class="one_half first"> 
           <h2 class="heading">Vulputate velit vitae laoreet</h2>
@@ -271,9 +277,9 @@ Licence URI: http://www.os-templates.com/template-terms
         </section>
       </div>
       <div class="clear"></div>
-    </div>
+    </div> -->
     <!-- THE TEAM -->
-    <div class="wrapper row3">
+    <!-- <div class="wrapper row3">
       <section class="hoc container clear"> 
         <div class="sectiontitle center">
           <h6 class="heading">Interdum dapibus quisque</h6>
@@ -311,20 +317,22 @@ Licence URI: http://www.os-templates.com/template-terms
         </div>
         <footer class="center"><a class="btn" href="#">View All The Team</a></footer>
       </section>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <template id="route-page">
   <div class="vue-component">
-     <div>
-      <img v-bind:src="imageUrl" id="Canvas" style="position:relative;height:100%;width:100%;">
-    </div>
-    <div v-for="direction in route.directions" id="routeDirections">
-      <p>{{ direction }}</p>
+    <div class="bgded overlay"> 
     </div>
     <div>
-      Total Time: {{ hours }} hours, {{ minutes }} minutes
+      <img v-bind:src="imageUrl" id="Canvas" style="position:relative;">
+      <div v-for="direction in route.directions" id="routeDirections">
+        <p>{{ direction }}</p>
+      </div>
+      <div>
+        Total Time: {{ hours }} hours, {{ minutes }} minutes
+      </div>
     </div>
   </div>
 </template>

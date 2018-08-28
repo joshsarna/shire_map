@@ -23,7 +23,7 @@ axios.get('api/routes/last').then(function(response) {
 
   var jg = new jsGraphics("Canvas");
   jg.setColor("blue"); // change to lighter blue?
-  jg.setStroke(3);
+  jg.setStroke(5);
   jg.drawPolyline(xs, ys);
   jg.paint();
 });

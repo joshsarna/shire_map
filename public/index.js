@@ -1,5 +1,38 @@
 /* global Vue, VueRouter, axios, jsGraphics */
 
+var noRoute = {
+  template: "#home-page",
+  data: function() {
+    return {
+      mainMessage: "No Route Found",
+      message: "\"There's [really] no knowing where you might be swept off to.\" ~ Bilbo Baggins",
+      newRoute: {
+        startLocationId: "",
+        endLocationId: ""
+      },
+      route: {}
+    };
+  },
+  created: function() {},
+  methods: {
+    makeRoute: function() {
+      console.log(this.newRoute);
+      var parameters = {
+        input_from: this.newRoute.startLocationId,
+        input_to: this.newRoute.endLocationId
+      };
+      axios.post('/api/routes', parameters).then(function(response) {
+        console.log(response.data.directions);
+        this.route = response.data;
+        router.push("/route");
+      }.bind(this)).catch(function(response) {
+        router.push("/noRoute");
+      });
+    }
+  },
+  computed: {}
+};
+
 var route = {
   template: "#route-page",
   data: function() {
@@ -219,6 +252,8 @@ var HomePage = {
   template: "#home-page",
   data: function() {
     return {
+      locations: [],
+      mainMessage: "Explore Middle Earth",
       message: "\"It's a dangerous business, [...] going out your door. You step onto the road, and if you don't keep your feet, there's no knowing where you might be swept off to.\" ~Bilbo Baggins",
       newRoute: {
         startLocationId: "",
@@ -227,7 +262,11 @@ var HomePage = {
       route: {}
     };
   },
-  created: function() {},
+  created: function() {
+    axios.get('/api/locations').then(function(response) {
+      this.locations = response.data;
+    }.bind(this));
+  },
   methods: {
     makeRoute: function() {
       console.log(this.newRoute);
@@ -239,7 +278,9 @@ var HomePage = {
         console.log(response.data.directions);
         this.route = response.data;
         router.push("/route");
-      }.bind(this));
+      }.bind(this)).catch(function(response) {
+        router.push("/noRoute");
+      });
     }
   },
   computed: {}
@@ -252,7 +293,8 @@ var router = new VueRouter({
     { path: "/shireMap", component: MapPage },
     { path: "/middleEarthMap", component: middleEarthMapPage },
     { path: "/mapOfBeleriand", component: BeleriandMapPage },
-    { path: "/route", component: route }
+    { path: "/route", component: route },
+    { path: "/noRoute", component: noRoute }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
@@ -261,5 +303,10 @@ var router = new VueRouter({
 
 var app = new Vue({
   el: "#vue-app",
-  router: router
+  router: router,
+  watch: {
+    '$route': function() {
+      window.location.reload();
+    }
+  }
 });
