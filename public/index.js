@@ -80,7 +80,7 @@ var BeleriandMapPage = {
   template: "#map-page",
   data: function() {
     return {
-      message: "",
+      message: "Worldview, in the Third Age",
       imageUrl: "images/Beleriand.jpg",
       newLocation: {
         id: 0,
@@ -135,7 +135,7 @@ var middleEarthMapPage = {
   template: "#map-page",
   data: function() {
     return {
-      message: "Welcome to Middle Earth!",
+      message: "Middle Earth, in the Third Age",
       imageUrl: "http://donsmaps.com/images29/middleearthlargelargerstill.jpg",
       newLocation: {
         id: 0,

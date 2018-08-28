@@ -20,7 +20,7 @@ Licence URI: http://www.os-templates.com/template-terms
   <script type="text/javascript" src="wz_jsgraphics.js"></script>
   <style type="text/css">
     img {
-      width: 807px;
+      width: 100%;
       opacity: 1;
     }
   </style>
@@ -324,7 +324,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <template id="route-page">
   <div class="vue-component">
     <div>
-      <img v-bind:src="imageUrl" id="Canvas" style="position:relative;">
+      <img v-bind:src="imageUrl" id="Canvas" style="position:relative;width:807px">
         Total Time: {{ hours }} hours, {{ minutes }} minutes
       <div v-for="direction in route.directions" id="routeDirections">
         <p>{{ direction }}</p>
@@ -339,7 +339,6 @@ Licence URI: http://www.os-templates.com/template-terms
   <div class="vue-component">
 
     <h1>{{ message }}</h1>
-    <p><input v-model="newLocation.name"></p>
     <img v-bind:src="imageUrl">
 
   </div>
