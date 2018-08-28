@@ -27,6 +27,7 @@ Licence URI: http://www.os-templates.com/template-terms
 </head>
 <body id="top">
   <div id="vue-app">
+    <!-- HEADER BEGIN -->
     <!-- Top Background Image Wrapper -->
     <div class="bgded overlay" style="background-image:url('');"> 
       <div class="wrapper row1">
@@ -66,33 +67,35 @@ Licence URI: http://www.os-templates.com/template-terms
         </header>
       </div>
     </div>
+    <!-- HEADER END -->
     <!-- End Top Background Image Wrapper -->
     <div id="Canvas" style="position:relative;height:100%;width:100%;">
       <router-view></router-view>
     </div>
+    <!-- FOOTER BEGIN -->
     <div class="wrapper row4 bgded overlay" style="background-image:url('images/demo/backgrounds/04.png');">
       <footer id="footer" class="hoc clear"> 
         <div class="sectiontitle">
-          <h3 class="heading">Preevent</h3>
+          <h3 class="heading">Further Exploration</h3>
           <ul class="nospace inline pushright uppercase">
             <li><a href="index.html"><i class="fa fa-lg fa-home"></i></a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="/#/about">About</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="#">Terms</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Cookies</a></li>
+            <!-- <li><a href="#">Terms</a></li> -->
+            <!-- <li><a href="#">Privacy</a></li> -->
+            <!-- <li><a href="#">Cookies</a></li> -->
             <li><a href="#">Disclaimer</a></li>
-            <li><a href="#">Online Shop</a></li>
-            <li><a href="#">Sitemap</a></li>
+            <!-- <li><a href="#">Online Shop</a></li> -->
+            <!-- <li><a href="#">Sitemap</a></li> -->
           </ul>
           <hr>
         </div>
-        <div class="one_quarter first">
+        <!-- <div class="one_quarter first">
           <h6 class="heading">Dictum aliquam</h6>
           <p>At feugiat nunc donec a est et metus aliquam tristique aenean eu elit vitae lectus mollis justo donec luctus vehicula lacus non.</p>
           <p>Pharetra tortor laoreet eget ut congue erat at neque dignissim suscipit pretium sem rhoncus aliquam tincidunt.</p>
-        </div>
-        <div class="one_quarter">
+        </div> -->
+        <!-- <div class="one_quarter">
           <h6 class="heading">Lacinia elementum</h6>
           <ul class="nospace linklist contact">
             <li><i class="fa fa-map-marker"></i>
@@ -104,8 +107,8 @@ Licence URI: http://www.os-templates.com/template-terms
               +00 (123) 456 7890</li>
             <li><i class="fa fa-fax"></i> +00 (123) 456 7890</li>
             <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
-          </ul>
-        </div>
+          </ul> -->
+        <!-- </div>
         <div class="one_quarter">
           <h6 class="heading">Vel diam tempor</h6>
           <ul class="nospace linklist">
@@ -115,35 +118,42 @@ Licence URI: http://www.os-templates.com/template-terms
             <li><a href="#">Bibendum arcu in tristique</a></li>
             <li><a href="#">Interdum eget sapien nec</a></li>
           </ul>
+        </div> -->
+        <div class="one_third first">
+          <h6 class="heading">Contemporaneity</h6>
         </div>
-        <div class="one_quarter">
-          <h6 class="heading">Vulputate nulla</h6>
+        <div class="one_third">
           <ul class="nospace linklist">
             <li>
               <article>
-                <h6 class="nospace font-x1"><a href="#">Vehicula augue</a></h6>
-                <time class="font-xs block btmspace-10" datetime="2045-04-06">Friday, 6<sup>th</sup> April 2045</time>
-                <p class="nospace">Arcu ut condimentum in erat tincidunt quis accumsan [&hellip;]</p>
+                <h6 class="nospace font-x1"><a href="#">Created</a></h6>
+                <time class="font-xs block btmspace-10" datetime="2045-04-06">Sunday, 26<sup>th</sup> August 2018</time>
+                <p class="nospace">See About page for more information on the creation of this project.</p>
               </article>
             </li>
+          </ul>
+        </div>
+        <div class="one_third">
+          <ul class="nospace linklist">
             <li>
               <article>
-                <h6 class="nospace font-x1"><a href="#">Condimentum aliquet</a></h6>
-                <time class="font-xs block btmspace-10" datetime="2045-04-05">Thursday, 5<sup>th</sup> April 2045</time>
-                <p class="nospace">Ultricies quis suscipit praesent euismod imperdiet ornare [&hellip;]</p>
+                <h6 class="nospace font-x1"><a href="#">Updated</a></h6>
+                <time class="font-xs block btmspace-10" datetime="2045-04-05">Tuesday, 28<sup>th</sup> August 2018</time>
+                <p class="nospace">Feedback is welcomed.</p>
               </article>
             </li>
           </ul>
         </div>
       </footer>
     </div>
-    <div class="wrapper row5">
+    <!-- <div class="wrapper row5">
       <div id="copyright" class="hoc clear"> 
         <p class="fl_left">Copyright &copy; 2016 - All Rights Reserved - <a href="#">Domain Name</a></p>
         <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
       </div>
-    </div>
+    </div> -->
     <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+    <!-- FOOTER END -->
   </div>
 <!-- JAVASCRIPTS -->
 <script src="layout/scripts/jquery.min.js"></script>
@@ -341,5 +351,14 @@ Licence URI: http://www.os-templates.com/template-terms
     <h1>{{ message }}</h1>
     <img v-bind:src="imageUrl">
 
+  </div>
+</template>
+
+<template id="about-page">
+  <div class="vue-component">
+    <h1>About</h1>
+    <p>
+      Information about this project will be displayed here.
+    </p>
   </div>
 </template>
