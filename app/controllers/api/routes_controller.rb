@@ -1,8 +1,10 @@
 class Api::RoutesController < ApplicationController
   def create
+    start_location = Location.find_by(name: params[:input_from]) || Location.find(Synonym.find_by(name: input_from).location_id)
+    end_location = Location.find_by(name: params[:input_to]) || Location.find(Synonym.find_by(name: input_to).location_id)
     parameters = {
-      start_location_id: Location.find_by(name: params[:input_from]).id,
-      end_location_id: Location.find_by(name: params[:input_to]).id
+      start_location_id: start_location.id,
+      end_location_id: end_location.id
     #   start_location_id: params[:start_location_id],
     #   end_location_id: params[:end_location_id],
     #   total_distance: Location.find(:start_location_id).distance_from("#{Location.find(:end_location_id).name}"),
