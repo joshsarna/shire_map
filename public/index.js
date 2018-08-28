@@ -1,5 +1,17 @@
 /* global Vue, VueRouter, axios, jsGraphics */
 
+var contact = {
+  template: "#contact-page",
+  data: function() {
+    return {
+      route: {}
+    };
+  },
+  created: function() {},
+  methods: {},
+  computed: {}
+};
+
 var about = {
   template: "#about-page",
   data: function() {
@@ -312,7 +324,8 @@ var router = new VueRouter({
     { path: "/mapOfBeleriand", component: BeleriandMapPage },
     { path: "/route", component: route },
     { path: "/noRoute", component: noRoute },
-    { path: "/about", component: about }
+    { path: "/about", component: about },
+    { path: "/contact", component: contact }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
