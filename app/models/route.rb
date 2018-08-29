@@ -74,6 +74,7 @@ class Route < ApplicationRecord
       lngs << nw_end.lng
       lngs << se_end.lng
     end
+    lngs << Location.find(end_location_id).lng
     lngs
   end
 
@@ -87,6 +88,7 @@ class Route < ApplicationRecord
       lats << nw_end.lat
       lats << se_end.lat
     end
+    lats << Location.find(end_location_id).lat
     lats
   end
 
