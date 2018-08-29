@@ -380,17 +380,66 @@ RouteSegment.create(nw_end: 41, se_end: 30, road: "Unmarked Trail")
 
 # Map.create(name: "", image_url: "", level: "")
 
-map = Map.first
-map.height = 478
-map.width = 807
-map.save
-
-map = Map.second
-map.height = 605
-map.width = 807
-map.save
-
 # map = Map.third
 # map.height = 
 # map.width = 
 # map.save
+
+# Synonym.create(name: "Bridge of Stonebows", location_id: Location.find_by(name: "Brandywine Bridge").id)
+# Synonym.create(name: "Great Bridge", location_id: Location.find_by(name: "Brandywine Bridge").id)
+# Synonym.create(name: "Erebor", location_id: Location.find_by(name: "The Lonely Mountain").id)
+# Synonym.create(name: "Minas Arnor", location_id: Location.find_by(name: "Minas Tirith").id)
+# Synonym.create(name: "The White City", location_id: Location.find_by(name: "Minas Tirith").id)
+# Synonym.create(name: "City of Kings", location_id: Location.find_by(name: "Minas Tirith").id)
+# Synonym.create(name: "Mundburg", location_id: Location.find_by(name: "Minas Tirith").id)
+# Synonym.create(name: "Minas Ithil", location_id: Location.find_by(name: "Minas Morgul").id)
+# Synonym.create(name: "The Dead City", location_id: Location.find_by(name: "Minas Morgul").id)
+# Synonym.create(name: "The Tower of Sorcery", location_id: Location.find_by(name: "Minas Morgul").id)
+# Synonym.create(name: "Pass of Imladris", location_id: Location.find_by(name: "High Pass").id)
+# Synonym.create(name: "Cirith Forn en Andrath", location_id: Location.find_by(name: "High Pass").id)
+# Synonym.create(name: "Angrenost", location_id: Location.find_by(name: "Isengard").id)
+# Synonym.create(name: "Nan Curunir", location_id: Location.find_by(name: "Isengard").id)
+# Synonym.create(name: "Wizard's Vale", location_id: Location.find_by(name: "Isengard").id)
+# Synonym.create(name: "The Dark Tower", location_id: Location.find_by(name: "Barad-dur").id)
+# Synonym.create(name: "The Dark Tower of Mordor", location_id: Location.find_by(name: "Barad-dur").id)
+# Synonym.create(name: "Lugbúrz", location_id: Location.find_by(name: "Barad-dur").id)
+# Synonym.create(name: "Barad-dûr", location_id: Location.find_by(name: "Barad-dur").id)
+# Synonym.create(name: "Mount Doom", location_id: Location.find_by(name: "Orodruin").id)
+# Synonym.create(name: "Amon Amarth", location_id: Location.find_by(name: "Orodruin").id)
+# Synonym.create(name: "The Fiery Mountain", location_id: Location.find_by(name: "Orodruin").id)
+# Synonym.create(name: "Dagorlad", location_id: Location.find_by(name: "Dead Marshes").id)
+# Synonym.create(name: "Doors of Durin", location_id: Location.find_by(name: "Moria Gate").id)
+# Synonym.create(name: "West-gate", location_id: Location.find_by(name: "Moria Gate").id)
+# Synonym.create(name: "West-door of Moria", location_id: Location.find_by(name: "Moria Gate").id)
+# Synonym.create(name: "Elven Door", location_id: Location.find_by(name: "Moria Gate").id)
+# Synonym.create(name: "Wetwang", location_id: Location.find_by(name: "Nindalf").id)
+# Synonym.create(name: "Ford of Rivendell", location_id: Location.find_by(name: "Ford of Bruinen").id)
+# Synonym.create(name: "Amon Lanc", location_id: Location.find_by(name: "Dol Guldur").id)
+# Synonym.create(name: "Athrad Angren", location_id: Location.find_by(name: "Fords of Isen").id)
+# Synonym.create(name: "Ethraid Engrin", location_id: Location.find_by(name: "Fords of Isen").id)
+# Synonym.create(name: "Aglarond", location_id: Location.find_by(name: "Helm's Deep").id)
+# Synonym.create(name: "The Cross-roads of the Fallen King", location_id: Location.find_by(name: "The Crossroads").id)
+# Synonym.create(name: "Black Gate", location_id: Location.find_by(name: "Morannon").id)
+# Synonym.create(name: "Crossing of Poros", location_id: Location.find_by(name: "Crossings of Poros").id)
+# Synonym.create(name: "Fords of Poros", location_id: Location.find_by(name: "Crossings of Poros").id)
+# Synonym.create(name: "Loeg Ningloron", location_id: Location.find_by(name: "Gladden Fields").id)
+# Synonym.create(name: "Lake-town", location_id: Location.find_by(name: "Esgaroth").id)
+# Synonym.create(name: "Lothlórien", location_id: Location.find_by(name: "Lothlorien").id)
+# Synonym.create(name: "Lórien", location_id: Location.find_by(name: "Lothlorien").id)
+# Synonym.create(name: "Lórinand", location_id: Location.find_by(name: "Lothlorien").id)
+# Synonym.create(name: "Laurelindórenan", location_id: Location.find_by(name: "Lothlorien").id)
+# Synonym.create(name: "The Golden Wood", location_id: Location.find_by(name: "Lothlorien").id)
+# Synonym.create(name: "The Hidden Land", location_id: Location.find_by(name: "Lothlorien").id)
+# Synonym.create(name: "Dwimordene", location_id: Location.find_by(name: "Lothlorien").id)
+# Synonym.create(name: "Barrow-downs", location_id: Location.find_by(name: "Barrow Downs").id)
+# Synonym.create(name: "Tyrn Gorthad", location_id: Location.find_by(name: "Barrow Downs").id)
+# Synonym.create(name: "Fornost Erain", location_id: Location.find_by(name: "Fornost").id)
+# Synonym.create(name: "Deadmen's Dike", location_id: Location.find_by(name: "Fornost").id)
+# Synonym.create(name: "Norbury of the Kings", location_id: Location.find_by(name: "Fornost").id)
+# Synonym.create(name: "Imladris", location_id: Location.find_by(name: "Rivendell").id)
+# Synonym.create(name: "Karningul", location_id: Location.find_by(name: "Rivendell").id)
+# Synonym.create(name: "Last Homely House East of the Sea", location_id: Location.find_by(name: "Rivendell").id)
+# Synonym.create(name: "Grey Havens", location_id: Location.find_by(name: "Mithlond").id)
+# Synonym.create(name: "Citadel of the Stars", location_id: Location.find_by(name: "Osgiliath").id)
+# Synonym.create(name: "Rohan (Capital)", location_id: Location.find_by(name: "Edoras").id)
+# Synonym.create(name: "Gondor (Capital)", location_id: Location.find_by(name: "Minas Tirith").id)
