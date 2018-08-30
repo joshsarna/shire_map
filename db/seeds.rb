@@ -163,7 +163,7 @@ RouteSegment.create!([
   {nw_end: Location.find_by(name: "High Pass").id, se_end: Location.find_by(name: "Old Ford").id, distance: "11.880337936", time: 712, description: nil, road: "Old Forest Road"}, # 52 59
   {nw_end: Location.find_by(name: "Great West Road/?Road of Lossanarch").id, se_end: Location.find_by(name: "The Crossroads").id, distance: "5.64288965038169", time: 338, description: nil, road: "Great West Road"}, # 93 72
   {nw_end: Location.find_by(name: "East Road/North to Little Delving").id, se_end: Location.find_by(name: "East Road/South to Longbottom").id, distance: "0.116309923531378", time: 6, description: nil, road: "East Road"}, # 39 38
-  {nw_end: Location.find_by(name: "Mathom House").id, se_end: Location.find_by(name: "East Road/North to Little Delving").id, distance: "0.533810729538892", time: 32, description: nil, road: "East Road"}, # 22 39
+  {nw_end: Location.find_by(name: "Mathom-House").id, se_end: Location.find_by(name: "East Road/North to Little Delving").id, distance: "0.533810729538892", time: 32, description: nil, road: "East Road"}, # 22 39
   {nw_end: Location.find_by(name: "Bamfurlong").id, se_end: Location.find_by(name: "Maggot's Lane/The Causeway").id, distance: "0.023222712", time: 1, description: nil, road: "Maggot's Lane"}, # 29 37
   {nw_end: Location.find_by(name: "?Tuckborough Road/?Woodhall Road").id, se_end: Location.find_by(name: "?Tuckborough Road/The Causeway").id, distance: "1.04990888024116", time: 62, description: nil, road: "?Tuckborough Road"}, # 40 44
   {nw_end: Location.find_by(name: "?Tuckborough Road/?Woodhall Road").id, se_end: Location.find_by(name: "?Woodhall Road/Unmarked Trail").id, distance: "0.108583019227206", time: 6, description: nil, road: "?Woodhall Road"}, # 40 41
