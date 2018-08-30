@@ -1,3 +1,33 @@
+locations = Location.all
+locations.each do |location|
+  location.destroy
+end
+
+maps = Map.all
+maps.each do |map|
+  map.destroy
+end
+
+locations = Location.all
+locations.each do |location|
+  location.destroy
+end
+
+segments = RouteSegment.all
+segments.each do |segment|
+  segment.destroy
+end
+
+synonyms = Synonym.all
+synonyms.each do |synonym|
+  synonym.destroy
+end
+
+warnings = RouteWarning.all
+warnings.each do |warning|
+  warning.destroy
+end
+
 Location.create!([
   {name: "Maggot's Lane/The Causeway", lng: "-117.972909", lat: "34.117647", location_type: "intersection"},
   {name: "Minas Morgul", lng: "-112.519287", lat: "32.604607", location_type: "site"},
