@@ -342,6 +342,12 @@ Licence URI: http://www.os-templates.com/template-terms
       <div v-for="direction in route.directions" id="routeDirections">
         <p>{{ direction }}</p>
       </div>
+      <div style="color:red">
+        <h3>Warnings:</h3>
+        <div v-for="warning in route.warnings">
+          <p>On {{ warning.road }}: {{ warning.text }}</p>
+        </div>
+      </div>
       <div>
         <p><a class="btn" v-on:click="travelByEagle()">Travel by Eagle</a></p>
       </div>

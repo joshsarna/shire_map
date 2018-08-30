@@ -122,7 +122,7 @@ class Route < ApplicationRecord
     warnings = []
     route_steps.each do |step|
       step.route_segment.route_warnings.each do |warning|
-        warnings << warning
+        warnings << {text: warning.text, road: warning.route_segment.road}
       end
     end
     warnings
