@@ -20,8 +20,8 @@ axios.get('api/routes/last').then(function(response) {
   }
 
   var jg = new jsGraphics("Canvas");
-    jg.setColor("blue"); // change to lighter blue?
-    jg.setStroke(5);
-    jg.drawLine(xs[0], ys[0], xs[xs.length - 1], ys[ys.length - 1]);
-    jg.paint();
-  });
+  jg.setColor("blue"); // change to lighter blue?
+  jg.setStroke(5);
+  jg.drawLine(xs[0], ys[0], xs[xs.length - 1], ys[ys.length - 1]);
+  jg.paint();
+});

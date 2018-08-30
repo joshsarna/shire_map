@@ -123,6 +123,21 @@ var route = {
       }
       let routeStuff = document.createElement('script'); routeStuff.setAttribute('src',"eagle-route.js");
       document.body.appendChild(routeStuff);
+      document.getElementById("eagleButton").innerText = "Eagle Route Shown";
+      document.getElementById("footButton").innerText = "Travel by Foot";
+    },
+    travelByFoot: function() {
+      console.log("traveling by foot");
+      var x = document.getElementById("Canvas").children.length - 1;
+      console.log(x);
+      for (var i = 0; i < x; i ++) {
+        console.log(document.getElementById("Canvas").children.length - 1);
+        document.getElementById("Canvas").children[1].remove();
+      }
+      let routeStuff = document.createElement('script'); routeStuff.setAttribute('src',"route.js");
+      document.body.appendChild(routeStuff);
+      document.getElementById("eagleButton").innerText = "Travel by Eagle";
+      document.getElementById("footButton").innerText = "Foot Route Shown";
     }
   },
   computed: {}
