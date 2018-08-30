@@ -1,5 +1,17 @@
 /* global Vue, VueRouter, axios, jsGraphics */
 
+var disclaimer = {
+  template: "#disclaimer-page",
+  data: function() {
+    return {
+      route: {}
+    };
+  },
+  created: function() {},
+  methods: {},
+  computed: {}
+};
+
 var contact = {
   template: "#contact-page",
   data: function() {
@@ -100,7 +112,12 @@ var route = {
       document.body.appendChild(routeStuff);
     }.bind(this));
   },
-  methods: {},
+  methods: {
+    travelByEagle: function() {
+      console.log("traveling by eagle");
+      // document.body.removeChild(routeStuff); // WHY NOT?
+    }
+  },
   computed: {}
 };
 
@@ -334,7 +351,8 @@ var router = new VueRouter({
     { path: "/route", component: route },
     { path: "/noRoute", component: noRoute },
     { path: "/about", component: about },
-    { path: "/contact", component: contact }
+    { path: "/contact", component: contact },
+    { path: "/disclaimer", component: disclaimer }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
