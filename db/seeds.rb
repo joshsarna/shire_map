@@ -250,7 +250,7 @@ Synonym.create!([
   {name: "Norbury of the Kings", location_id: Location.find_by(name: "Fornost").id},
   {name: "Imladris", location_id: Location.find_by(name: "Rivendell").id},
   {name: "Karningul", location_id: Location.find_by(name: "Rivendell").id},
-  {name: "Last Homely House East of the Sea", location_id: Location.find_by(name: "Rivendel",).id},
+  {name: "Last Homely House East of the Sea", location_id: Location.find_by(name: "Rivendell",).id},
   {name: "Grey Havens", location_id: Location.find_by(name: "Mithlond").id},
   {name: "Citadel of the Stars", location_id: Location.find_by(name: "Osgiliath").id},
   {name: "Rohan (Capital)", location_id: Location.find_by(name: "Edoras").id},
