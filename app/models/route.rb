@@ -117,4 +117,14 @@ class Route < ApplicationRecord
     end
     total_time
   end
+
+  def warnings
+    warnings = []
+    route_steps.each do |step|
+      step.route_segment.route_warnings.each do |warning|
+        warnings << warning
+      end
+    end
+    warnings
+  end
 end
