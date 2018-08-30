@@ -115,7 +115,14 @@ var route = {
   methods: {
     travelByEagle: function() {
       console.log("traveling by eagle");
-      // document.body.removeChild(routeStuff); // WHY NOT?
+      var x = document.getElementById("Canvas").children.length - 1;
+      console.log(x);
+      for (var i = 0; i < x; i ++) {
+        console.log(document.getElementById("Canvas").children.length - 1);
+        document.getElementById("Canvas").children[1].remove();
+      }
+      let routeStuff = document.createElement('script'); routeStuff.setAttribute('src',"eagle-route.js");
+      document.body.appendChild(routeStuff);
     }
   },
   computed: {}
