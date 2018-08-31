@@ -349,7 +349,7 @@ Licence URI: http://www.os-templates.com/template-terms
       </div>
       <p>End at: <a v-bind:href="'/#/locations/' + route.end_location_id">{{ route.end_name }}</a></p>
       <div style="color:red">
-        <h3>Warnings:</h3>
+        <h3 v-if="warningsExist">Warnings:</h3>
         <div v-for="warning in route.warnings">
           <p>On {{ warning.road }}: {{ warning.text }}</p>
         </div>

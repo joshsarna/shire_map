@@ -129,7 +129,8 @@ var route = {
       stepLines: [],
       time: 0,
       hours: 0,
-      minutes: 0
+      minutes: 0,
+      warningsExist: false
     };
   },
   created: function() {
@@ -145,6 +146,12 @@ var route = {
       console.log(this.time - Math.floor(this.time / 60) * 60);
       this.hours = Math.floor(this.time / 60);
       this.minutes = this.time - this.hours * 60;
+
+      // route warnings
+      if (this.route.warnings.length > 0) {
+        this.warningsExist = true;
+        console.log(this.warningsExist);
+      }
 
       let routeStuff = document.createElement('script'); routeStuff.setAttribute('src',"route.js");
       document.body.appendChild(routeStuff);
