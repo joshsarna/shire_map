@@ -275,7 +275,7 @@
 #   {reviewer: "Aragorn", text: "Great place", location_id: Location.find_by(name: "Rivendell").id},
 #   {reviewer: "Sam", text: "Somewhere I've always wanted to go", location_id: Location.find_by(name: "Rivendell").id},
 #   {reviewer: "Bilbo", text: "Somewhere I went", location_id: Location.find_by(name: "Rivendell").id},
-#   {reviewer: "Boromir", text: "One does not simply walk into Mordor. Its Black Gates are guarded by more than just Orcs. There is evil there that does not sleep, and teh Great Eye is ever watchful.", location_id: Location.find_by(name: "Morannon").id},
+#   {reviewer: "Boromir", text: "One does not simply walk into Mordor. Its Black Gates are guarded by more than just Orcs. There is evil there that does not sleep, and the Great Eye is ever watchful.", location_id: Location.find_by(name: "Morannon").id},
 #   {reviewer: "Pippen", text: "Somewhat strange of a place", location_id: Location.find_by(name: "Minas Tirith").id},
 #   {reviewer: "Gandalf", text: "A city of fools", location_id: Location.find_by(name: "Minas Tirith").id}
 # ])
