@@ -10,3 +10,6 @@ json.route_ys @route.route_ys
 json.map @route.map
 json.time @route.time
 json.warnings @route.warnings
+
+json.start_name Location.find(@route.start_location_id).name
+json.end_name Location.find(@route.end_location_id).name

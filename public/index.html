@@ -341,9 +341,11 @@ Licence URI: http://www.os-templates.com/template-terms
     <div>
       <img v-bind:src="imageUrl" id="Canvas" style="position:relative;width:807px">
         Total Time: {{ hours }} hours, {{ minutes }} minutes
+      <p>Start at: <a v-bind:href="'/#/locations/' + route.start_location_id">{{ route.start_name }}</a></p>
       <div v-for="direction in route.directions" id="routeDirections">
         <p>{{ direction }}</p>
       </div>
+      <p>End at: <a v-bind:href="'/#/locations/' + route.end_location_id">{{ route.end_name }}</a></p>
       <div style="color:red">
         <h3>Warnings:</h3>
         <div v-for="warning in route.warnings">
