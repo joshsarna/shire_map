@@ -201,9 +201,9 @@ end
 #   {nw_end: Location.find_by(name: "Great West Road/?Road of Lossanarch").id, se_end: Location.find_by(name: "Pelargir").id, distance: "8.6934922825396", time: 521, description: nil, road: "?Road of Lossanarch"} # 93 88
 # ])
 RouteWarning.create!([
-  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "East Road/The Causeway").id, Location.find_by(name: "The Golden Perch").id).id, text: "SAMPLE warning on the Causeway"}, # 43, 32
-  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bree").id, Location.find_by(name: "Barrow Downs").id).id, text: "SAMPLE warning on the North-South Road"}, # 83, 81
-  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bamfurlong").id, Location.find_by(name: "Maggot's Lane/The Causeway").id).id, text: "Farmer Maggot has trained dogs to deter the would-be mushroom thief"} # 29, 37
+  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "East Road/The Causeway").id, Location.find_by(name: "The Golden Perch").id)[0].id, text: "SAMPLE warning on the Causeway"}, # 43, 32
+  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bree").id, Location.find_by(name: "Barrow Downs").id)[0].id, text: "SAMPLE warning on the North-South Road"}, # 83, 81
+  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bamfurlong").id, Location.find_by(name: "Maggot's Lane/The Causeway").id)[0].id, text: "Farmer Maggot has trained dogs to deter the would-be mushroom thief"} # 29, 37
 ])
 # Synonym.create!([
 #   {name: "Amon Sul", location_id: Location.find_by(name: "Weathertop").id},
