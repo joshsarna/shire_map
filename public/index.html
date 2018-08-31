@@ -412,6 +412,14 @@ Licence URI: http://www.os-templates.com/template-terms
   <div class="vue-component">
     <h1>{{ location.name }}</h1>
     <p>
+      Also Known As:
+    </p>
+    <ul>
+      <div v-for="synonym in location.synonyms">
+        <li>{{ synonym.name }}</li>
+      </div>
+    </ul>
+    <p>
       {{ location }}
     </p>
   </div>
