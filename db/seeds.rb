@@ -23,10 +23,10 @@
 #   synonym.destroy
 # end
 
-# warnings = RouteWarning.all
-# warnings.each do |warning|
-#   warning.destroy
-# end
+warnings = RouteWarning.all
+warnings.each do |warning|
+  warning.destroy
+end
 
 # images = Image.all
 # images.each do |image|
@@ -200,10 +200,10 @@
 #   {nw_end: Location.find_by(name: "Mithlond").id, se_end: Location.find_by(name: "Elostirion").id, distance: "6.05545434489849", time: 363, description: nil, road: "East Road"}, # 85 66
 #   {nw_end: Location.find_by(name: "Great West Road/?Road of Lossanarch").id, se_end: Location.find_by(name: "Pelargir").id, distance: "8.6934922825396", time: 521, description: nil, road: "?Road of Lossanarch"} # 93 88
 # ])
-# RouteWarning.create!([
-#   {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "East Road/The Causeway").id, Location.find_by(name: "The Golden Perch").id), text: "SAMPLE warning on the Causeway"}, # 43, 32
-#   {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bree").id, Location.find_by(name: "Barrow Downs").id), text: "SAMPLE warning on the North-South Road"}, # 83, 81
-#   {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bamfurlong").id, Location.find_by(name: "Maggot's Lane/The Causeway").id), text: "Farmer Maggot has trained dogs to deter the would-be mushroom thief"} # 29, 37
+RouteWarning.create!([
+  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "East Road/The Causeway").id, Location.find_by(name: "The Golden Perch").id).id, text: "SAMPLE warning on the Causeway"}, # 43, 32
+  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bree").id, Location.find_by(name: "Barrow Downs").id).id, text: "SAMPLE warning on the North-South Road"}, # 83, 81
+  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bamfurlong").id, Location.find_by(name: "Maggot's Lane/The Causeway").id).id, text: "Farmer Maggot has trained dogs to deter the would-be mushroom thief"} # 29, 37
 # ])
 # Synonym.create!([
 #   {name: "Amon Sul", location_id: Location.find_by(name: "Weathertop").id},
