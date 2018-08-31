@@ -1,5 +1,24 @@
 /* global Vue, VueRouter, axios, jsGraphics */
 
+var locationPage = {
+  template: "#location-page",
+  data: function() {
+    return {
+      location: {}
+    };
+  },
+  created: function() {
+    console.log(this.$route.params.id);
+    //  + this.$route.params.id
+    axios.get("/api/locations/" + this.$route.params.id).then(function(response) {
+      console.log(response.data);
+      this.location = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
 var disclaimer = {
   template: "#disclaimer-page",
   data: function() {
@@ -332,7 +351,9 @@ var HomePage = {
         startLocationId: "",
         endLocationId: ""
       },
-      route: {}
+      route: {},
+      location: "",
+      locationUnfoundMessage: ""
     };
   },
   created: function() {
@@ -358,6 +379,19 @@ var HomePage = {
       }.bind(this)).catch(function(response) {
         router.push("/noRoute");
       });
+    },
+    searchLocation: function() {
+      var indexOfLocation = -1;
+      for (var i = 0; i < this.locations.length; i++) {
+        if (this.locations[i].name === this.location) {
+          indexOfLocation = this.locations[i].id;
+        }
+      }
+      if (indexOfLocation < 0) {
+        this.locationUnfoundMessage = "Location Unknown";
+      } else {
+        router.push('/locations/' + indexOfLocation);
+      }
     }
   },
   computed: {}
@@ -374,7 +408,8 @@ var router = new VueRouter({
     { path: "/noRoute", component: noRoute },
     { path: "/about", component: about },
     { path: "/contact", component: contact },
-    { path: "/disclaimer", component: disclaimer }
+    { path: "/disclaimer", component: disclaimer },
+    { path: "/locations/:id", component: locationPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

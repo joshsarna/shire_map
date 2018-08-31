@@ -207,7 +207,9 @@ Licence URI: http://www.os-templates.com/template-terms
             <article><i class="fa fa-location-arrow"></i>
               <h6 class="heading">Find a Location</h6>
               <p>This is where a user will search for a location to view reviews and pictures</p>
-              <footer><a class="btn" href="#">Read More</a></footer>
+              <input v-model="location">
+              <p><a class="btn" v-on:click="searchLocation()">Search Location</a></p>
+              <p style="color:red">{{ locationUnfoundMessage }}</p>
             </article>
           </li>
           <!-- <li class="one_third">
@@ -402,6 +404,15 @@ Licence URI: http://www.os-templates.com/template-terms
     <h1>Disclaimer</h1>
     <p>
       It should be obvious that I lay no claim to the literary content of this webpage. Middle Earth, all the locations it contains, and all the earth of which it is the middle are creations of J.R.R. Tolkien. My knowledge of them is owed to him, his son Christopher Tolkien, and to Karen Wynn Fonstad, Christina Scull, and Wayne G. Hammond.
+    </p>
+  </div>
+</template>
+
+<template id="location-page">
+  <div class="vue-component">
+    <h1>{{ location.name }}</h1>
+    <p>
+      {{ location }}
     </p>
   </div>
 </template>
