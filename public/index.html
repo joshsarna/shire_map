@@ -444,6 +444,10 @@ Licence URI: http://www.os-templates.com/template-terms
           <li class="one_half">
             <article><i class="fa fa-pencil"></i>
               <h6 class="heading">Reviews</h6>
+              <div v-for="review in location.reviews">
+                <p><strong>{{ review.reviewer }}</strong></p>
+                <p>"{{ review.text }}"</p>
+              </div>
             </article>
           </li>
         </ul>

@@ -258,7 +258,12 @@
 # ])
 
 Image.create!([
-  {image_url: "https://vignette.wikia.nocookie.net/lotr/images/c/c1/Images_%288%29.jpg/revision/latest?cb=20120612055950", location_id: Location.find_by(name: "Minas Tirith").id},
-  {image_url: "https://vignette.wikia.nocookie.net/lotr/images/e/e4/Minas_Tirith.jpg/revision/latest?cb=20141228214636", location_id: Location.find_by(name: "Minas Tirith").id},
-  {image_url: "https://vignette.wikia.nocookie.net/lotr/images/c/ca/Screen_shot_2010-12-07_at_6.32.19_PM.png/revision/latest?cb=20141228220242", location_id: Location.find_by(name: "Minas Tirith").id}
+  # {image_url: "https://vignette.wikia.nocookie.net/lotr/images/c/c1/Images_%288%29.jpg/revision/latest?cb=20120612055950", location_id: Location.find_by(name: "Minas Tirith").id},
+  # {image_url: "https://vignette.wikia.nocookie.net/lotr/images/e/e4/Minas_Tirith.jpg/revision/latest?cb=20141228214636", location_id: Location.find_by(name: "Minas Tirith").id},
+  # {image_url: "https://vignette.wikia.nocookie.net/lotr/images/c/ca/Screen_shot_2010-12-07_at_6.32.19_PM.png/revision/latest?cb=20141228220242", location_id: Location.find_by(name: "Minas Tirith").id},
+])
+Review.create!([
+  {reviewer: "Aragorn", text: "Great place", location_id: Location.find_by(name: "Rivendell").id},
+  {reviewer: "Sam", text: "Somewhere I've always wanted to go", location_id: Location.find_by(name: "Rivendell").id},
+  {reviewer: "Bilbo", text: "Somewhere I went", location_id: Location.find_by(name: "Rivendell").id}
 ])

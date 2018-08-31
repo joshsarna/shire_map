@@ -407,7 +407,16 @@ var HomePage = {
         }
       }
       if (indexOfLocation < 0) {
-        this.locationUnfoundMessage = "Location Unknown";
+        for (var n = 0; n < this.synonyms.length; n++) {
+          if (this.synonyms[n].name === this.location) {
+            indexOfLocation = this.synonyms[n].location_id;
+          }
+        }
+        if (indexOfLocation < 0) {
+          this.locationUnfoundMessage = "Location Unknown";
+        } else {
+          router.push('/locations/' + indexOfLocation);
+        }
       } else {
         router.push('/locations/' + indexOfLocation);
       }
