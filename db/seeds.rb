@@ -28,6 +28,16 @@
 #   warning.destroy
 # end
 
+# images = Image.all
+# images.each do |image|
+#   image.destroy
+# end
+
+# reviews = Review.all
+# reviews.each do |review|
+#   review.destroy
+# end
+
 # Location.create!([
 #   {name: "Maggot's Lane/The Causeway", lng: "-117.972909", lat: "34.117647", location_type: "intersection"},
 #   {name: "Minas Morgul", lng: "-112.519287", lat: "32.604607", location_type: "site"},
@@ -190,11 +200,11 @@
 #   {nw_end: Location.find_by(name: "Mithlond").id, se_end: Location.find_by(name: "Elostirion").id, distance: "6.05545434489849", time: 363, description: nil, road: "East Road"}, # 85 66
 #   {nw_end: Location.find_by(name: "Great West Road/?Road of Lossanarch").id, se_end: Location.find_by(name: "Pelargir").id, distance: "8.6934922825396", time: 521, description: nil, road: "?Road of Lossanarch"} # 93 88
 # ])
-# # RouteWarning.create!([
-# #   {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "East Road/The Causeway").id, Location.find_by(name: "The Golden Perch").id), text: "SAMPLE warning on the Causeway"}, # 43, 32
-# #   {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bree").id, Location.find_by(name: "Barrow Downs").id), text: "SAMPLE warning on the North-South Road"}, # 83, 81
-# #   {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bamfurlong").id, Location.find_by(name: "Maggot's Lane/The Causeway").id), text: "Farmer Maggot has trained dogs to deter the would-be mushroom thief"} # 29, 37
-# # ])
+RouteWarning.create!([
+  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "East Road/The Causeway").id, Location.find_by(name: "The Golden Perch").id), text: "SAMPLE warning on the Causeway"}, # 43, 32
+  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bree").id, Location.find_by(name: "Barrow Downs").id), text: "SAMPLE warning on the North-South Road"}, # 83, 81
+  {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bamfurlong").id, Location.find_by(name: "Maggot's Lane/The Causeway").id), text: "Farmer Maggot has trained dogs to deter the would-be mushroom thief"} # 29, 37
+])
 # Synonym.create!([
 #   {name: "Amon Sul", location_id: Location.find_by(name: "Weathertop").id},
 #   {name: "Bridge of Stonebows", location_id: Location.find_by(name: "Brandywine Bridge").id},
@@ -256,17 +266,16 @@
 #   {name: "Rohan (Capital)", location_id: Location.find_by(name: "Edoras").id},
 #   {name: "Gondor (Capital)", location_id: Location.find_by(name: "Minas Tirith").id}
 # ])
-
-Image.create!([
-  # {image_url: "https://vignette.wikia.nocookie.net/lotr/images/c/c1/Images_%288%29.jpg/revision/latest?cb=20120612055950", location_id: Location.find_by(name: "Minas Tirith").id},
-  # {image_url: "https://vignette.wikia.nocookie.net/lotr/images/e/e4/Minas_Tirith.jpg/revision/latest?cb=20141228214636", location_id: Location.find_by(name: "Minas Tirith").id},
-  # {image_url: "https://vignette.wikia.nocookie.net/lotr/images/c/ca/Screen_shot_2010-12-07_at_6.32.19_PM.png/revision/latest?cb=20141228220242", location_id: Location.find_by(name: "Minas Tirith").id},
-])
-Review.create!([
-  # {reviewer: "Aragorn", text: "Great place", location_id: Location.find_by(name: "Rivendell").id},
-  # {reviewer: "Sam", text: "Somewhere I've always wanted to go", location_id: Location.find_by(name: "Rivendell").id},
-  # {reviewer: "Bilbo", text: "Somewhere I went", location_id: Location.find_by(name: "Rivendell").id},
-  {reviewer: "Boromir", text: "One does not simply walk into Mordor. Its Black Gates are guarded by more than just Orcs. There is evil there that does not sleep, and teh Great Eye is ever watchful.", location_id: Location.find_by(name: "Morannon").id},
-  {reviewer: "Pippen", text: "Somewhat strange of a place", location_id: Location.find_by(name: "Minas Tirith").id},
-  {reviewer: "Gandalf", text: "A city of fools", location_id: Location.find_by(name: "Minas Tirith").id}
-])
+# Image.create!([
+#   {image_url: "https://vignette.wikia.nocookie.net/lotr/images/c/c1/Images_%288%29.jpg/revision/latest?cb=20120612055950", location_id: Location.find_by(name: "Minas Tirith").id},
+#   {image_url: "https://vignette.wikia.nocookie.net/lotr/images/e/e4/Minas_Tirith.jpg/revision/latest?cb=20141228214636", location_id: Location.find_by(name: "Minas Tirith").id},
+#   {image_url: "https://vignette.wikia.nocookie.net/lotr/images/c/ca/Screen_shot_2010-12-07_at_6.32.19_PM.png/revision/latest?cb=20141228220242", location_id: Location.find_by(name: "Minas Tirith").id},
+# ])
+# Review.create!([
+#   {reviewer: "Aragorn", text: "Great place", location_id: Location.find_by(name: "Rivendell").id},
+#   {reviewer: "Sam", text: "Somewhere I've always wanted to go", location_id: Location.find_by(name: "Rivendell").id},
+#   {reviewer: "Bilbo", text: "Somewhere I went", location_id: Location.find_by(name: "Rivendell").id},
+#   {reviewer: "Boromir", text: "One does not simply walk into Mordor. Its Black Gates are guarded by more than just Orcs. There is evil there that does not sleep, and teh Great Eye is ever watchful.", location_id: Location.find_by(name: "Morannon").id},
+#   {reviewer: "Pippen", text: "Somewhat strange of a place", location_id: Location.find_by(name: "Minas Tirith").id},
+#   {reviewer: "Gandalf", text: "A city of fools", location_id: Location.find_by(name: "Minas Tirith").id}
+# ])
