@@ -4,7 +4,8 @@ var locationPage = {
   template: "#location-page",
   data: function() {
     return {
-      location: {}
+      location: {},
+      synonymsExist: false
     };
   },
   created: function() {
@@ -13,6 +14,9 @@ var locationPage = {
     axios.get("/api/locations/" + this.$route.params.id).then(function(response) {
       console.log(response.data);
       this.location = response.data;
+      if (this.location.synonyms.length > 0) {
+        this.synonymsExist = true;
+      }
     }.bind(this));
   },
   methods: {},
@@ -67,7 +71,9 @@ var noRoute = {
         startLocationId: "",
         endLocationId: ""
       },
-      route: {}
+      route: {},
+      location: "",
+      locationUnfoundMessage: ""
     };
   },
   created: function() {
@@ -92,6 +98,19 @@ var noRoute = {
       }.bind(this)).catch(function(response) {
         router.push("/noRoute");
       });
+    },
+    searchLocation: function() {
+      var indexOfLocation = -1;
+      for (var i = 0; i < this.locations.length; i++) {
+        if (this.locations[i].name === this.location) {
+          indexOfLocation = this.locations[i].id;
+        }
+      }
+      if (indexOfLocation < 0) {
+        this.locationUnfoundMessage = "Location Unknown";
+      } else {
+        router.push('/locations/' + indexOfLocation);
+      }
     }
   },
   computed: {}
