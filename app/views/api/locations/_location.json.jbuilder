@@ -4,3 +4,4 @@ json.lng location.lng
 json.type location.location_type
 json.id location.id
 json.synonyms location.synonyms
+json.images location.images

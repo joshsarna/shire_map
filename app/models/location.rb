@@ -2,6 +2,7 @@ class Location < ApplicationRecord
   has_many :routes_from, class_name: "Route", foreign_key: "start_location_id"
   has_many :routes_to, class_name: "Route", foreign_key: "end_location_id"
   has_many :synonyms
+  has_many :images
 
   def distance_from(end_point)
     point_b = Location.find_by(name: "#{end_point}")
