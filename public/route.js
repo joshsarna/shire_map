@@ -15,10 +15,10 @@ axios.get('api/routes/last').then(function(response) {
   var imageHeight = response.data.map.height;
   var imageWidth = response.data.map.width;
   for (var i in xs) {
-    xs[i] = Math.abs( xs[i] - (lngFloor) ) / Math.abs( lngFloor - lngCeiling ) * imageWidth;
+    xs[i] = Math.abs( xs[i] - (lngFloor) ) / Math.abs( lngFloor - lngCeiling ) * 807.0;
   }
   for (var i2 in ys) {
-    ys[i2] = Math.abs( ys[i2] - (latCeiling) ) / ( latCeiling - latFloor ) * imageHeight;
+    ys[i2] = Math.abs( ys[i2] - (latCeiling) ) / ( latCeiling - latFloor ) * (807.0 / imageWidth) * imageHeight;
   }
 
   var jg = new jsGraphics("Canvas");
