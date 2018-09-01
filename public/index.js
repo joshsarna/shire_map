@@ -303,7 +303,7 @@ var MapPage = {
   data: function() {
     return {
       message: "Welcome to Middle Earth!",
-      imageUrl: "http://corecanvas.s3.amazonaws.com/theonering-0188db0e/gallery/original/shire_map.jpg",
+      imageUrl: "http://donsmaps.com/images29/middleearthlargelargerstill.jpg",
       newLocation: {
         id: 0,
         name: "",
@@ -331,8 +331,8 @@ var MapPage = {
         }
       }.bind(this));
       if (this.newLocation.name !== "") {
-        this.newLocation.lat = (-0.000293 * event.clientY + 34.233968);
-        this.newLocation.lng = (0.000401 * event.clientX - 118.251203);
+        this.newLocation.lat = (-0.036642 * event.clientY + 43.507119);
+        this.newLocation.lng = (0.039865 * event.clientX - 126.989168);
         console.log("location: " + this.newLocation.name);
         console.log("lat: " + this.newLocation.lat);
         console.log("lng: " + this.newLocation.lng);
@@ -353,11 +353,11 @@ var MapPage = {
       // this.newLocation.lat = (-0.000137 * event.clientY + 34.213661);
       // this.newLocation.lng = (0.00091 * event.clientX - 118.246286);
       // axios.post('/api/locations', this.newLocation).then(function(response) {
-      //   this.newLocation = {
-      //     name: "",
-      //     lat: 0,
-      //     lng: 0
-      //   };
+      // this.newLocation = {
+      //   name: "",
+      //   lat: 0,
+      //   lng: 0
+      // };
       // }.bind(this));
       // end
     }
