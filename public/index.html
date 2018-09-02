@@ -214,11 +214,24 @@ Licence URI: http://www.os-templates.com/template-terms
               <p style="color:red">{{ locationUnfoundMessage }}</p>
             </article>
           </li>
+          <!-- LODGING FINDER -->
           <li class="one_third">
             <article><i class="fa fa-home"></i>
               <h6 class="heading">Find Lodging</h6>
-              <p>Search for an inn or campsite near you, or search for popular lodging sites by name:</p>
-              <footer><a class="btn" href="#">Read More</a></footer>
+              <p>
+                Search for an inn or campsite near you
+              </p>
+              <a class="btn" href="#">Select My Location on Map</a>
+              <p>
+                Or search for popular lodging sites by name
+              </p>
+              <input v-model="lodging" list="lodging-sites">
+              <datalist id="lodging-sites">
+                <option>The Golden Perch</option>
+                <option>The Green Dragon</option>
+                <option>Elven Campsite</option>
+              </datalist>
+              <p><a class="btn" href="#">Search Lodging Site</a></p>
             </article>
           </li>
         </ul>

@@ -379,6 +379,7 @@ var HomePage = {
       },
       route: {},
       location: "",
+      lodging: "",
       locationUnfoundMessage: ""
     };
   },
