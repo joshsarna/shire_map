@@ -407,16 +407,22 @@ var HomePage = {
         router.push("/noRoute");
       });
     },
-    searchLocation: function() {
+    searchLocation: function(type) {
+      var site = '';
+      if (type === 'location') {
+        site = this.location;
+      } else if (type === 'lodging') {
+        site = this.lodging;
+      }
       var indexOfLocation = -1;
       for (var i = 0; i < this.locations.length; i++) {
-        if (this.locations[i].name === this.location) {
+        if (this.locations[i].name === site) {
           indexOfLocation = this.locations[i].id;
         }
       }
       if (indexOfLocation < 0) {
         for (var n = 0; n < this.synonyms.length; n++) {
-          if (this.synonyms[n].name === this.location) {
+          if (this.synonyms[n].name === site) {
             indexOfLocation = this.synonyms[n].location_id;
           }
         }

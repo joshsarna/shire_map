@@ -210,7 +210,7 @@ Licence URI: http://www.os-templates.com/template-terms
               <h6 class="heading">Find a Location</h6>
               <p>Search for a location by name to view reviews and pictures</p>
               <input v-model="location" list="locations">
-              <p><a class="btn" v-on:click="searchLocation()">Search Location</a></p>
+              <p><a class="btn" v-on:click="searchLocation('location')">Search Location</a></p>
               <p style="color:red">{{ locationUnfoundMessage }}</p>
             </article>
           </li>
@@ -231,7 +231,7 @@ Licence URI: http://www.os-templates.com/template-terms
                 <option>The Green Dragon</option>
                 <option>Elven Campsite</option>
               </datalist>
-              <p><a class="btn" href="#">Search Lodging Site</a></p>
+              <p><a class="btn" v-on:click="searchLocation('lodging')">Search Lodging Site</a></p>
             </article>
           </li>
         </ul>
