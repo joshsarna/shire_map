@@ -64,7 +64,7 @@ class Route < ApplicationRecord
     directions
   end
 
-  def route_xs
+  def coords
     points = Set.new([])
     points << {Location.find(start_location_id).lat => Location.find(start_location_id).lng}
     route_steps.each do |step|
@@ -75,7 +75,11 @@ class Route < ApplicationRecord
       points << {se_end.lat => se_end.lng}
     end
     points << {Location.find(end_location_id).lat => Location.find(end_location_id).lng}
-    # points
+    points 
+  end
+
+  def route_xs
+    points = coords
     lngs = []
     points.each do |point|
       lngs << point.values[0]
@@ -84,17 +88,7 @@ class Route < ApplicationRecord
   end
 
   def route_ys
-    points = Set.new([])
-    points << {Location.find(start_location_id).lat => Location.find(start_location_id).lng}
-    route_steps.each do |step|
-      route_segment = RouteSegment.find(step.route_segment_id)
-      nw_end = Location.find(route_segment.nw_end)
-      se_end = Location.find(route_segment.se_end)
-      points << {nw_end.lat => nw_end.lng}
-      points << {se_end.lat => se_end.lng}
-    end
-    points << {Location.find(end_location_id).lat => Location.find(end_location_id).lng}
-    # points
+    points = coords
     lats = []
     points.each do |point|
       lats << point.keys[0]
