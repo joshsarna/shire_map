@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     get '/locations' => 'locations#index'
     post '/locations' => 'locations#create'
+    post '/locations/lodging' => 'locations#lodging'
     get '/locations/:id' => 'locations#show'
     patch '/locations/:id' => 'locations#update'
 

@@ -221,7 +221,7 @@ Licence URI: http://www.os-templates.com/template-terms
               <p>
                 Search for an inn or campsite near you
               </p>
-              <a class="btn" href="#">Select My Location on Map</a>
+              <a class="btn" href="/#/locations/select">Select My Location on Map</a>
               <p>
                 Or search for popular lodging sites by name
               </p>
@@ -390,8 +390,21 @@ Licence URI: http://www.os-templates.com/template-terms
 <template id="map-page">
   <div class="vue-component">
 
-    <img src="http://donsmaps.com/images29/middleearthlargelargerstill.jpg" v-on:click="markThisSpot($event)">
+    <img src="http://donsmaps.com/images29/middleearthlargelargerstill.jpg" id="Canvas" v-on:click="markThisSpot($event)">
     <p><input v-model="newLocation.name"></p>
+    <p>Show Route For:</p>
+    <p>
+      <input type="checkbox" name="character" value="Frodo" v-on:click="showRoute($event)"> Frodo
+      <input type="checkbox" name="character" value="Aragorn" v-on:click="showRoute($event)"> Aragorn
+    </p>
+
+  </div>
+</template>
+
+<template id="select-page">
+  <div class="vue-component">
+
+    <img v-bind:src="imageUrl" v-on:click="markThisSpot($event)">
 
   </div>
 </template>

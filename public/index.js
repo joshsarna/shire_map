@@ -1,5 +1,51 @@
 /* global Vue, VueRouter, axios, jsGraphics */
 
+var selectLocation = {
+  template: "#select-page",
+  data: function() {
+    return {
+      message: "Select Your Location",
+      imageUrl: "http://donsmaps.com/images29/middleearthlargelargerstill.jpg",
+      clientLocation: {
+        lat: 0,
+        lng: 0
+      },
+      locations: []
+    };
+  },
+  created: function() {},
+  methods: {
+    markThisSpot: function(event) {
+      // this should be an api request that just sends back the route to the nearest lodging
+      console.log("x: " + event.clientX);
+      console.log("y: " + event.clientY);
+      this.clientLocation.lat = (-0.036642 * event.clientY + 43.507119);
+      this.clientLocation.lng = (0.039865 * event.clientX - 126.989168);
+      // axios request, then makeRoute function with redirect
+      var parameters = {
+        client_lat: this.clientLocation.lat,
+        client_lng: this.clientLocation.lng
+      };
+      console.log(parameters);
+      axios.post('/api/locations/lodging', parameters).then(function(response) {
+        console.log(response.data);
+        var parameters = {
+          input_from: response.data.start_location,
+          input_to: response.data.end_location
+        };
+        console.log(parameters);
+        axios.post('/api/routes', parameters).then(function(response) {
+          console.log(response.data.directions);
+          router.push("/route");
+        }.bind(this)).catch(function(response) {
+          router.push("/noRoute");
+        });
+      }.bind(this));
+    }
+  },
+  computed: {}
+};
+
 var locationPage = {
   template: "#location-page",
   data: function() {
@@ -73,6 +119,7 @@ var noRoute = {
       },
       route: {},
       location: "",
+      lodging: "",
       locationUnfoundMessage: ""
     };
   },
@@ -99,15 +146,30 @@ var noRoute = {
         router.push("/noRoute");
       });
     },
-    searchLocation: function() {
+    searchLocation: function(type) {
+      var site = '';
+      if (type === 'location') {
+        site = this.location;
+      } else if (type === 'lodging') {
+        site = this.lodging;
+      }
       var indexOfLocation = -1;
       for (var i = 0; i < this.locations.length; i++) {
-        if (this.locations[i].name === this.location) {
+        if (this.locations[i].name === site) {
           indexOfLocation = this.locations[i].id;
         }
       }
       if (indexOfLocation < 0) {
-        this.locationUnfoundMessage = "Location Unknown";
+        for (var n = 0; n < this.synonyms.length; n++) {
+          if (this.synonyms[n].name === site) {
+            indexOfLocation = this.synonyms[n].location_id;
+          }
+        }
+        if (indexOfLocation < 0) {
+          this.locationUnfoundMessage = "Location Unknown";
+        } else {
+          router.push('/locations/' + indexOfLocation);
+        }
       } else {
         router.push('/locations/' + indexOfLocation);
       }
@@ -265,34 +327,18 @@ var middleEarthMapPage = {
     }.bind(this));
   },
   methods: {
+    showRoute: function(event) {
+      // console.log(event.toElement.value);
+      // console.log(event.srcElement);
+      console.log("x: " + event.clientX);
+      console.log("y: " + event.clientY);
+      let routeStuff = document.createElement('script'); routeStuff.setAttribute('src',"frodo.js");
+      document.body.appendChild(routeStuff);
+    },
     markThisSpot: function(event) {
       console.log("x: " + event.clientX);
       console.log("y: " + event.clientY);
-      // console.log(this.newLocation.name);
-      // if newLocation.name is the name of a location in this.locations
-      this.locations.forEach(function(location) {
-        if (location.name === this.newLocation.name) {
-          this.newLocation = location;
-        }
-      }.bind(this));
-      if (this.newLocation.name !== "") {
-        this.newLocation.lat = (-0.005667 * event.clientY + 35.608117);
-        this.newLocation.lng = (0.018101 * event.clientX - 122.185221);
-        console.log("location: " + this.newLocation.name);
-        console.log("lat: " + this.newLocation.lat);
-        console.log("lng: " + this.newLocation.lng);
-        // axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
-        //   console.log("Location has been updated.");
-        // }.bind(this));
-      } else {
-        console.log("Location not found");
-      }
-      this.newLocation = {
-        name: "",
-        lat: 0,
-        lng: 0,
-        location_type: "site"
-      };
+      
     }
   },
   computed: {}
@@ -451,6 +497,7 @@ var router = new VueRouter({
     { path: "/about", component: about },
     { path: "/contact", component: contact },
     { path: "/disclaimer", component: disclaimer },
+    { path: "/locations/select", component: selectLocation },
     { path: "/locations/:id", component: locationPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
