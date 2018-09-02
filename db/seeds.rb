@@ -131,6 +131,7 @@
 #   {name: "Great West Road/?Helm's Road", lng: "-115.433548", lat: "33.074968", location_type: "intersection"},
 #   {name: "Great West Road/?Road of Lossanarch", lng: "-112.917509", lat: "32.700946", location_type: "intersection"}
 # ])
+
 # Map.create!([
 #   {lat_floor: "33.9955302", lat_ceiling: "34.0245158", lng_floor: "-117.387304", lng_ceiling: "-117.353406", name: "Bree", image_url: "https://vignette.wikia.nocookie.net/lotr/images/f/f7/Breemap3.jpg/revision/latest?cb=20160503181050", level: "quaternary", height: nil, width: nil},
 #   {lat_floor: "33.9882839", lat_ceiling: "34.0317621", lng_floor: "-117.396217", lng_ceiling: "-117.344493", name: "Bree-land", image_url: "https://ahobbitsjourney.files.wordpress.com/2014/06/bree-land-map-archet-combe-staddle.jpg", level: "tertiary", height: nil, width: nil},
@@ -140,6 +141,8 @@
 #   {lat_floor: "34.064907", lat_ceiling: "34.197343", lng_floor: "-118.245188", lng_ceiling: "-117.93321", name: "A Part of the Shire", image_url: "http://corecanvas.s3.amazonaws.com/theonering-0188db0e/gallery/original/shire_map.jpg", level: "tertiary", height: 478, width: 807},
 #   {lat_floor: "31.703554", lat_ceiling: "34.899742", lng_floor: "-121.877504", lng_ceiling: "-108.156946", name: "Middle Earth", image_url: "http://donsmaps.com/images29/middleearthlargelargerstill.jpg", level: "primary", height: 605, width: 807}
 # ])
+
+# # dependent on Location
 # RouteSegment.create!([
 #   {nw_end: Location.find_by(name: "Bag End").id, se_end: Location.find_by(name: "Bagshot Row/Hill Lane").id, distance: "0.0451090841605882", time: 2, description: nil, road: "Hill Lane"}, # 21 34
 #   {nw_end: Location.find_by(name: "Bywater Road/Hill Lane").id, se_end: Location.find_by(name: "The Green Dragon").id, distance: "0.28526714884356", time: 17, description: nil, road: "Bywater Road"}, # 35 25
@@ -200,11 +203,30 @@
 #   {nw_end: Location.find_by(name: "Mithlond").id, se_end: Location.find_by(name: "Elostirion").id, distance: "6.05545434489849", time: 363, description: nil, road: "East Road"}, # 85 66
 #   {nw_end: Location.find_by(name: "Great West Road/?Road of Lossanarch").id, se_end: Location.find_by(name: "Pelargir").id, distance: "8.6934922825396", time: 521, description: nil, road: "?Road of Lossanarch"} # 93 88
 # ])
+
+# # to update distances and times based on location coords
+# segments = RouteSegment.all
+# segments.each do |segment|
+#   loc1 = Location.find(segment["nw_end"])
+#   loc2 = Location.find(segment["se_end"])
+#   distance = loc1.distance_from(loc2["name"])
+#   segment["distance"] = distance
+#   # p segment
+#   segment["time"] = distance * 60
+#   if segment["time"] == 0
+#     segment["time"] = 1
+#   end
+#   segment.save
+# end
+
+# # dependent on Location and RouteSegment
 # RouteWarning.create!([
 #   {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "East Road/The Causeway").id, Location.find_by(name: "The Golden Perch").id)[0].id, text: "SAMPLE warning on the Causeway"}, # 43, 32
 #   {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bree").id, Location.find_by(name: "Barrow Downs").id)[0].id, text: "SAMPLE warning on the North-South Road"}, # 83, 81
 #   {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bamfurlong").id, Location.find_by(name: "Maggot's Lane/The Causeway").id)[0].id, text: "Farmer Maggot has trained dogs to deter the would-be mushroom thief"} # 29, 37
 # ])
+
+# # dependent on Location
 # Synonym.create!([
 #   {name: "Amon Sul", location_id: Location.find_by(name: "Weathertop").id},
 #   {name: "Bridge of Stonebows", location_id: Location.find_by(name: "Brandywine Bridge").id},
@@ -266,11 +288,15 @@
 #   {name: "Rohan (Capital)", location_id: Location.find_by(name: "Edoras").id},
 #   {name: "Gondor (Capital)", location_id: Location.find_by(name: "Minas Tirith").id}
 # ])
+
+# # dependent on Location
 # Image.create!([
 #   {image_url: "https://vignette.wikia.nocookie.net/lotr/images/c/c1/Images_%288%29.jpg/revision/latest?cb=20120612055950", location_id: Location.find_by(name: "Minas Tirith").id},
 #   {image_url: "https://vignette.wikia.nocookie.net/lotr/images/e/e4/Minas_Tirith.jpg/revision/latest?cb=20141228214636", location_id: Location.find_by(name: "Minas Tirith").id},
 #   {image_url: "https://vignette.wikia.nocookie.net/lotr/images/c/ca/Screen_shot_2010-12-07_at_6.32.19_PM.png/revision/latest?cb=20141228220242", location_id: Location.find_by(name: "Minas Tirith").id},
 # ])
+
+# # dependent on Location
 # Review.create!([
 #   {reviewer: "Aragorn", text: "Great place", location_id: Location.find_by(name: "Rivendell").id},
 #   {reviewer: "Sam", text: "Somewhere I've always wanted to go", location_id: Location.find_by(name: "Rivendell").id},
