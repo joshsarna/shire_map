@@ -65,30 +65,40 @@ class Route < ApplicationRecord
   end
 
   def route_xs
-    lngs = Set.new([])
-    lngs << Location.find(start_location_id).lng
+    points = Set.new([])
+    points << {Location.find(start_location_id).lat => Location.find(start_location_id).lng}
     route_steps.each do |step|
       route_segment = RouteSegment.find(step.route_segment_id)
       nw_end = Location.find(route_segment.nw_end)
       se_end = Location.find(route_segment.se_end)
-      lngs << nw_end.lng
-      lngs << se_end.lng
+      points << {nw_end.lat => nw_end.lng}
+      points << {se_end.lat => se_end.lng}
     end
-    lngs << Location.find(end_location_id).lng
+    points << {Location.find(end_location_id).lat => Location.find(end_location_id).lng}
+    # points
+    lngs = []
+    points.each do |point|
+      lngs << point.values[0]
+    end
     lngs
   end
 
   def route_ys
-    lats = Set.new([])
-    lats << Location.find(start_location_id).lat
+    points = Set.new([])
+    points << {Location.find(start_location_id).lat => Location.find(start_location_id).lng}
     route_steps.each do |step|
       route_segment = RouteSegment.find(step.route_segment_id)
       nw_end = Location.find(route_segment.nw_end)
       se_end = Location.find(route_segment.se_end)
-      lats << nw_end.lat
-      lats << se_end.lat
+      points << {nw_end.lat => nw_end.lng}
+      points << {se_end.lat => se_end.lng}
     end
-    lats << Location.find(end_location_id).lat
+    points << {Location.find(end_location_id).lat => Location.find(end_location_id).lng}
+    # points
+    lats = []
+    points.each do |point|
+      lats << point.keys[0]
+    end
     lats
   end
 
