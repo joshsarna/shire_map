@@ -223,9 +223,9 @@ var route = {
     travelByEagle: function() {
       console.log("traveling by eagle");
       var x = document.getElementById("Canvas").children.length - 1;
-      console.log(x);
+      console.log(document.getElementById("Canvas"));
+      console.log(document.getElementById("Canvas").children.length - 1);
       for (var i = 0; i < x; i ++) {
-        console.log(document.getElementById("Canvas").children.length - 1);
         document.getElementById("Canvas").children[1].remove();
       }
       let routeStuff = document.createElement('script'); routeStuff.setAttribute('src',"eagle-route.js");
@@ -318,7 +318,9 @@ var middleEarthMapPage = {
         lng: 0,
         location_type: "site"
       },
-      locations: []
+      locations: [],
+      frodo: false,
+      aragorn: false
     };
   },
   created: function() {
@@ -328,12 +330,32 @@ var middleEarthMapPage = {
   },
   methods: {
     showRoute: function(event) {
-      // console.log(event.toElement.value);
-      // console.log(event.srcElement);
-      console.log("x: " + event.clientX);
-      console.log("y: " + event.clientY);
-      let routeStuff = document.createElement('script'); routeStuff.setAttribute('src',"frodo.js");
-      document.body.appendChild(routeStuff);
+      console.log(event.srcElement.innerText);
+      if (event.srcElement.innerText === "FRODO") {
+        this.frodo = !this.frodo;
+        if (this.frodo === true) {
+          let routeStuff = document.createElement('script'); routeStuff.setAttribute('src','frodo.js');
+          document.body.appendChild(routeStuff);
+        } else {
+          // Remove the route:
+          var x = document.getElementById("Canvas").children.length - 1;
+          for (var i = 0; i < x; i ++) {
+            document.getElementById("Canvas").children[1].remove();
+          }
+        }
+      } else if (event.srcElement.innerText === "ARAGORN") {
+        this.aragorn = !this.aragorn;
+        if (this.aragorn === true) {
+          let routeStuff = document.createElement('script'); routeStuff.setAttribute('src','aragorn.js');
+          document.body.appendChild(routeStuff);
+        } else {
+          // Remove the route:
+          var x = document.getElementById("Canvas").children.length - 1;
+          for (var i = 0; i < x; i ++) {
+            document.getElementById("Canvas").children[1].remove();
+          }
+        }
+      }
     },
     markThisSpot: function(event) {
       console.log("x: " + event.clientX);
