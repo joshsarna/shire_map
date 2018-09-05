@@ -32,7 +32,7 @@ for (var i2 = 0; i2 < ys.length; i2++) {
   ys[i2] -= 91;
 }
 
-jg.setColor("blue");
+jg.setColor("green");
 jg.setStroke(3);
 jg.drawPolyline(xs, ys);
 jg.paint();

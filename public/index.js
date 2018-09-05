@@ -192,7 +192,8 @@ var route = {
       time: 0,
       hours: 0,
       minutes: 0,
-      warningsExist: false
+      warningsExist: false,
+      shire: false
     };
   },
   created: function() {
@@ -201,6 +202,9 @@ var route = {
       console.log(response.data);
       this.route = response.data;
       this.imageUrl = this.route.map.image_url;
+      if (this.route.map.name === "A Part of the Shire") {
+        this.shire = true;
+      }
 
       // travel time
       this.time = this.route.time;
@@ -332,7 +336,6 @@ var middleEarthMapPage = {
   },
   methods: {
     showRoute: function(event) {
-      console.log(event.srcElement.innerText);
       if (event.srcElement.innerText === "FRODO") {
         this.frodo = !this.frodo;
         if (this.frodo === true) {
@@ -408,9 +411,9 @@ var MapPage = {
         console.log("location: " + this.newLocation.name);
         console.log("lat: " + this.newLocation.lat);
         console.log("lng: " + this.newLocation.lng);
-        // axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
-        //   console.log("Location has been updated.");
-        // }.bind(this));
+        axios.patch('/api/locations/' + this.newLocation.id, this.newLocation).then(function(response) {
+          console.log("Location has been updated.");
+        }.bind(this));
       } else {
         console.log("Location not found");
       }
