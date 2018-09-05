@@ -382,3 +382,20 @@
 #   {image_url: "https://lotr-sounds.ambient-mixer.com/images_template/4/b/3/4b37bcdf212da08de12dd70b422dbcfa_full.jpg", location_id: Location.find_by(name: "Rivendell").id},
 #   {image_url: "https://cdn.quizzclub.com/trivia/2016-11/in-the-lord-of-the-rings-which-mythological-creatures-live-at-rivendell.jpg", location_id: Location.find_by(name: "Rivendell").id}
 # ])
+
+# Synonym.create(name: "House of Elrond", location_id: Location.find_by(name: "Rivendell").id)
+
+# Location.create(name: "Tower of Cirith Ungol", lat: 0, lng: 0, location_type: "site", lodging_site: false)
+# Location.create(name: "Isenmouthe", lat: 0, lng: 0, location_type: "site", lodging_site: false)
+
+# RouteSegment.create(nw_end: Location.find_by(name: "Minas Morgul").id, se_end: Location.find_by(name: "Tower of Cirith Ungol").id, road: "Cirith Ungol")
+# RouteSegment.create(nw_end: Location.find_by(name: "Tower of Cirith Ungol").id, se_end: Location.find_by(name: "Orodruin").id, road: "Sauron's Road")
+# RouteSegment.create(nw_end: Location.find_by(name: "Orodruin").id, se_end: Location.find_by(name: "Barad-dur").id, road: "Sauron's Road")
+# RouteSegment.create(nw_end: Location.find_by(name: "Morannon").id, se_end: Location.find_by(name: "Isenmouthe").id, road: "Udûn Valley")
+# RouteSegment.create(nw_end: Location.find_by(name: "Isenmouthe").id, se_end: Location.find_by(name: "Barad-dur").id, road: "a road of unknown name")
+
+# RouteWarning.create(route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Minas Morgul").id, Location.find_by(name: "Tower of Cirith Ungol").id)[0].id, text: "Here resides an evil thing in spider-form, the last child of Ungoliant to trouble the unhappy world, serving none but herself, drinking the blood of Elves and Men; all living things are her food and her vomit darkness.")
+# RouteWarning.create(route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Morannon").id, Location.find_by(name: "Isenmouthe").id)[0].id, text: "One does not simply walk into Mordor. It's black gates are guarded by more than just Orcs. There is an evil there that does not sleep; the Great Eye is ever watchful.")
+
+# RouteWarning.find(1).destroy
+# RouteWarning.find(2).destroy
