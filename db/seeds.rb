@@ -331,3 +331,54 @@
 # RouteSegment.create(nw_end: 117, se_end: 118, road: "?Small West Road")
 # RouteSegment.create(nw_end: 118, se_end: 119, road: "?Small West Road")
 # RouteSegment.create(nw_end: 119, se_end: 93, road: "?Small West Road")
+
+# Review.create!([
+#   {reviewer: "Bilbo", text: "A perfect house, whether you like food or sleep or story-telling or singing or just sitting and thinking best, or a pleasant mixture of them all.", location_id: Location.find_by(name: "Rivendell").id},
+#   {reviewer: "Sam", text: "It's a big house this, and very peculiar. Always a bit more to discover, and no knowing what you'll find round a corner. And Elves, sir! Elves here and Elves there. Some like kings, terrible and splended; and some as merry as children.", location_id: Location.find_by(name: "Rivendell").id},
+# ])
+
+# Location.create(name: "ER1", lat: 0, lng: 0, location_type: "intersection", lodging_site: false)
+# Location.create(name: "ER2", lat: 0, lng: 0, location_type: "intersection", lodging_site: false)
+# Location.create(name: "ER3", lat: 0, lng: 0, location_type: "intersection", lodging_site: false)
+# Location.create(name: "ER4", lat: 0, lng: 0, location_type: "intersection", lodging_site: false)
+# Location.create(name: "ER5", lat: 0, lng: 0, location_type: "intersection", lodging_site: false)
+# Location.create(name: "ER6", lat: 0, lng: 0, location_type: "intersection", lodging_site: false)
+# Location.create(name: "ER7", lat: 0, lng: 0, location_type: "intersection", lodging_site: false)
+# Location.create(name: "The Prancing Pony", lat: 0, lng: 0, location_type: "site", lodging_site: true)
+# Location.create(name: "Bree West Gate", lat: 0, lng: 0, location_type: "site", lodging_site: false)
+# Location.create(name: "Bree South Gate", lat: 0, lng: 0, location_type: "site", lodging_site: false)
+
+# segment = RouteSegment.find(60)
+# segment.destroy
+# segment = RouteSegment.find(31)
+# segment.destroy
+# segment = RouteSegment.find(32)
+# segment.destroy
+# segment = RouteSegment.find(33)
+# segment.destroy
+
+# RouteSegment.create(nw_end: 31, se_end: 128, road: "East Road")
+# RouteSegment.create(nw_end: 128, se_end: 129, road: "East Road")
+# RouteSegment.create(nw_end: 129, se_end: 83, road: "East Road")
+# RouteSegment.create(nw_end: 83, se_end: 136, road: "East Road")
+# RouteSegment.create(nw_end: 136, se_end: 135, road: "East Road")
+# RouteSegment.create(nw_end: 135, se_end: 137, road: "East Road")
+# RouteSegment.create(nw_end: 137, se_end: 130, road: "East Road")
+# RouteSegment.create(nw_end: 130, se_end: 131, road: "East Road")
+# RouteSegment.create(nw_end: 131, se_end: 132, road: "East Road")
+# RouteSegment.create(nw_end: 132, se_end: 133, road: "East Road")
+# RouteSegment.create(nw_end: 133, se_end: 134, road: "East Road")
+# RouteSegment.create(nw_end: 134, se_end: 61, road: "East Road")
+
+# RouteSegment.create(nw_end: 48, se_end: 131, road: "an unmarked trail")
+# RouteSegment.create(nw_end: 62, se_end: 130, road: "an unmarked trail")
+
+# location = Location.find_by(name: "Bree")
+# location.name = "East Road/North-South Road"
+# location.save
+
+# Image.create([
+#   {image_url: "https://vignette.wikia.nocookie.net/lotr/images/d/d8/614690.jpg/revision/latest/scale-to-width-down/350?cb=20180501204919", location_id: Location.find_by(name: "Rivendell").id},
+#   {image_url: "https://lotr-sounds.ambient-mixer.com/images_template/4/b/3/4b37bcdf212da08de12dd70b422dbcfa_full.jpg", location_id: Location.find_by(name: "Rivendell").id},
+#   {image_url: "https://cdn.quizzclub.com/trivia/2016-11/in-the-lord-of-the-rings-which-mythological-creatures-live-at-rivendell.jpg", location_id: Location.find_by(name: "Rivendell").id}
+# ])

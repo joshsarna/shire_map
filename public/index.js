@@ -204,6 +204,8 @@ var route = {
       this.imageUrl = this.route.map.image_url;
       if (this.route.map.name === "A Part of the Shire") {
         this.shire = true;
+      } else if (this.route.map.name === "Eriador") {
+        this.shire = true;
       }
 
       // travel time
