@@ -342,6 +342,7 @@ var middleEarthMapPage = {
           for (var i = 0; i < x; i ++) {
             document.getElementById("Canvas").children[1].remove();
           }
+          this.aragorn = !this.aragorn;
         }
       } else if (event.srcElement.innerText === "ARAGORN") {
         this.aragorn = !this.aragorn;
@@ -354,6 +355,7 @@ var middleEarthMapPage = {
           for (var i = 0; i < x; i ++) {
             document.getElementById("Canvas").children[1].remove();
           }
+          this.frodo = !this.frodo;
         }
       }
     },
