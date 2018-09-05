@@ -378,16 +378,19 @@ Licence URI: http://www.os-templates.com/template-terms
 </template>
 
 <!-- PRODUCTION MAP PAGE -->
-<!-- <template id="map-page">
-  <div class="vue-component">
-
-    <h1>{{ message }}</h1>
-    <img v-bind:src="imageUrl">
-
-  </div>
-</template> -->
-<!-- TO EDIT LOCATIONS -->
 <template id="map-page">
+  <div class="vue-component">
+    <img v-bind:src="imageUrl" id="Canvas" style="width:825px">
+    <p v-if="routeOptions">
+      <a class="btn" v-on:click="showRoute($event)">Frodo</a>
+      <a class="btn" v-on:click="showRoute($event)">Aragorn</a>
+      <!-- <input type="checkbox" name="frodo" value="frodo" v-on:click="showRoute($event)"> Frodo
+      <input type="checkbox" name="character2" value="aragorn" v-on:click="showRoute($event)"> Aragorn -->
+    </p>
+  </div>
+</template>
+<!-- TO EDIT LOCATIONS -->
+<!-- <template id="map-page">
   <div class="vue-component">
 
     <img src="http://donsmaps.com/images29/middleearthlargelargerstill.jpg" id="Canvas" v-on:click="markThisSpot($event)" style="width:825px">
@@ -396,12 +399,12 @@ Licence URI: http://www.os-templates.com/template-terms
     <p>
       <a class="btn" v-on:click="showRoute($event)">Frodo</a>
       <a class="btn" v-on:click="showRoute($event)">Aragorn</a>
-      <!-- <input type="checkbox" name="frodo" value="frodo" v-on:click="showRoute($event)"> Frodo
-      <input type="checkbox" name="character2" value="aragorn" v-on:click="showRoute($event)"> Aragorn -->
+      <input type="checkbox" name="frodo" value="frodo" v-on:click="showRoute($event)"> Frodo
+      <input type="checkbox" name="character2" value="aragorn" v-on:click="showRoute($event)"> Aragorn
     </p>
 
   </div>
-</template>
+</template> -->
 
 <template id="select-page">
   <div class="vue-component">

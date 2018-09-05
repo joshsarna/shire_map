@@ -263,7 +263,8 @@ var BeleriandMapPage = {
         lng: 0,
         location_type: "site"
       },
-      locations: []
+      locations: [],
+      routeOptions: false
     };
   },
   created: function() {
@@ -320,7 +321,8 @@ var middleEarthMapPage = {
       },
       locations: [],
       frodo: false,
-      aragorn: false
+      aragorn: false,
+      routeOptions: true
     };
   },
   created: function() {
