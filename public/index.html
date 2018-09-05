@@ -390,12 +390,14 @@ Licence URI: http://www.os-templates.com/template-terms
 <template id="map-page">
   <div class="vue-component">
 
-    <img src="http://donsmaps.com/images29/middleearthlargelargerstill.jpg" id="Canvas" v-on:click="markThisSpot($event)">
+    <img src="http://donsmaps.com/images29/middleearthlargelargerstill.jpg" id="Canvas" v-on:click="markThisSpot($event)" style="width:825px">
     <p><input v-model="newLocation.name"></p>
     <p>Show Route For:</p>
     <p>
-      <input type="checkbox" name="character" value="Frodo" v-on:click="showRoute($event)"> Frodo
-      <input type="checkbox" name="character" value="Aragorn" v-on:click="showRoute($event)"> Aragorn
+      <a class="btn" v-on:click="showRoute($event)">Frodo</a>
+      <a class="btn" v-on:click="showRoute($event)">Aragorn</a>
+      <!-- <input type="checkbox" name="frodo" value="frodo" v-on:click="showRoute($event)"> Frodo
+      <input type="checkbox" name="character2" value="aragorn" v-on:click="showRoute($event)"> Aragorn -->
     </p>
 
   </div>
