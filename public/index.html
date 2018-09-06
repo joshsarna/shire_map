@@ -138,7 +138,7 @@ Licence URI: http://www.os-templates.com/template-terms
             <li>
               <article>
                 <h6 class="nospace font-x1"><a href="#">Updated</a></h6>
-                <time class="font-xs block btmspace-10" datetime="2045-04-05">Sunday, 2<sup>nd</sup> September 2018</time>
+                <time class="font-xs block btmspace-10" datetime="2045-04-05">Thursday, 6<sup>th</sup> September 2018</time>
                 <p class="nospace">Feedback is welcomed.</p>
               </article>
             </li>
@@ -173,7 +173,7 @@ Licence URI: http://www.os-templates.com/template-terms
           <footer>
             <ul class="nospace inline pushright">
               <li><a class="btn inverse" href="/#/middleEarthMap">Map of Middle Earth</a></li>
-              <li><a class="btn inverse" href="/#/MapOfBeleriand">Worldview, in the Second Age</a></li>
+              <li><a class="btn inverse" href="/#/MapOfWorld">Worldview, in the Second Age</a></li>
             </ul>
           </footer>
         </div>
@@ -230,6 +230,7 @@ Licence URI: http://www.os-templates.com/template-terms
                 <option>The Golden Perch</option>
                 <option>The Green Dragon</option>
                 <option>Elven Campsite</option>
+                <option>The Prancing Pony</option>
               </datalist>
               <p><a class="btn" v-on:click="searchLocation('lodging')">Search Lodging Site</a></p>
             </article>
@@ -383,6 +384,7 @@ Licence URI: http://www.os-templates.com/template-terms
   <div class="vue-component">
     <img v-bind:src="imageUrl" id="Canvas" style="width:825px">
     <p v-if="routeOptions">
+      Show Route for:
       <a class="btn" v-on:click="showRoute($event)">Frodo</a>
       <a class="btn" v-on:click="showRoute($event)">Aragorn</a>
     </p>

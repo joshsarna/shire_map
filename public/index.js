@@ -522,7 +522,7 @@ var router = new VueRouter({
     { path: "/map", component: MapPage },
     { path: "/shireMap", component: MapPage },
     { path: "/middleEarthMap", component: middleEarthMapPage },
-    { path: "/mapOfBeleriand", component: BeleriandMapPage },
+    { path: "/mapOfWorld", component: BeleriandMapPage },
     { path: "/route", component: route },
     { path: "/noRoute", component: noRoute },
     { path: "/about", component: about },

@@ -399,3 +399,6 @@
 
 # RouteWarning.find(1).destroy
 # RouteWarning.find(2).destroy
+
+# Review.create(reviewer: "ELrond", text: "There in the courts of the King grows a white tree, from the seed of that tree which Isildur brought over the deep waters, and the seed of that tree before came from Eressëa, and before that out of the Uttermost West in the Day before days when the world was young.", location_id: Location.find_by(name: "Minas Tirith").id)
+# Review.create(reviewer: "Boromir", text: "Have you ever seen it? The White Tower of Ecthelion, glimmering like a spike of pearl and silver, its banners caught high in the morning breeze. Have you ever been called home by the clear ringing of silver trumpets?", location_id: Location.find_by(name: "Minas Tirith").id)
