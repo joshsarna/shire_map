@@ -321,44 +321,44 @@ RouteSegment.create!([
   {nw_end: Location.find_by(name: "NS5").id, se_end: Location.find_by(name: "NS6").id, distance: "70.0664133754052", time: 4203, description: nil, road: "North-South Road"}, # 98 99
   {nw_end: Location.find_by(name: "Sarn Ford").id, se_end: Location.find_by(name: "?Sarn Road/North-South Road").id, distance: "14.8395759342706", time: 890, description: nil, road: "?Sarn Road"}, # 63 90
   {nw_end: Location.find_by(name: "NS6").id, se_end: Location.find_by(name: "NS7").id, distance: "13.4108176074637", time: 804, description: nil, road: "North-South Road"}, # 99 100
-  {nw_end: Location.find_by(name: "NS7").id0, se_end:Location.find_by(name: "NS8").id, distance: "8.50714924428603", time: 510, description: nil, road: "North-South Road"}, # 100 101
-  {nw_end: Location.find_by(name: "NS8").id1, se_end:Location.find_by(name: "Fords of Isen").id, distance: "11.9067149349027", time: 714, description: nil, road: "North-South Road"}, # 101 70
+  {nw_end: Location.find_by(name: "NS7").id, se_end:Location.find_by(name: "NS8").id, distance: "8.50714924428603", time: 510, description: nil, road: "North-South Road"}, # 100 101
+  {nw_end: Location.find_by(name: "NS8").id, se_end:Location.find_by(name: "Fords of Isen").id, distance: "11.9067149349027", time: 714, description: nil, road: "North-South Road"}, # 101 70
   {nw_end: Location.find_by(name: "Barrow Downs").id, se_end: Location.find_by(name: "NS1").id, distance: "4.20243376792587", time: 252, description: nil, road: "an unmarked trail"}, # 81 94
   {nw_end: Location.find_by(name: "Tharbad").id, se_end: Location.find_by(name: "NS5").id, distance: "7.77735216342798", time: 466, description: nil, road: "North-South Road"}, # 64 98
-  {nw_end: Location.find_by(name: "SW1").id2, se_end:Location.find_by(name: "SW2").id, distance: "8.99184860070038", time: 539, description: nil, road: "?Small West Road"}, # 102 103
-  {nw_end: Location.find_by(name: "SW2").id3, se_end:Location.find_by(name: "SW3").id, distance: "11.6214987078938", time: 697, description: nil, road: "?Small West Road"}, # 103 104
+  {nw_end: Location.find_by(name: "SW1").id, se_end:Location.find_by(name: "SW2").id, distance: "8.99184860070038", time: 539, description: nil, road: "?Small West Road"}, # 102 103
+  {nw_end: Location.find_by(name: "SW2").id, se_end:Location.find_by(name: "SW3").id, distance: "11.6214987078938", time: 697, description: nil, road: "?Small West Road"}, # 103 104
   {nw_end: Location.find_by(name: "Edoras").id, se_end: Location.find_by(name: "Erech").id, distance: "25.3573178747273", time: 1521, description: nil, road: "The Paths of the Dead"}, # 86 89
-  {nw_end: Location.find_by(name: "SW3").id4, se_end:Location.find_by(name: "SW4").id, distance: "10.8183848988841", time: 649, description: nil, road: "?Small West Road"}, # 104 105
-  {nw_end: Location.find_by(name: "SW4").id5, se_end:Location.find_by(name: "SW5").id, distance: "10.5952644987299", time: 635, description: nil, road: "?Small West Road"}, # 105 106
-  {nw_end: Location.find_by(name: "SW5").id6, se_end:Location.find_by(name: "SW6").id, distance: "18.6504162723198", time: 1119, description: nil, road: "?Small West Road"}, # 106 107
-  {nw_end: Location.find_by(name: "SW6").id7, se_end:Location.find_by(name: "SW7").id, distance: "10.5344562782683", time: 632, description: nil, road: "?Small West Road"}, # 107 108
-  {nw_end: Location.find_by(name: "SW8").id9, se_end:Location.find_by(name: "Pelargir").id, distance: "15.9602569235506", time: 957, description: nil, road: "?Small West Road"}, # 109 88
+  {nw_end: Location.find_by(name: "SW3").id, se_end:Location.find_by(name: "SW4").id, distance: "10.8183848988841", time: 649, description: nil, road: "?Small West Road"}, # 104 105
+  {nw_end: Location.find_by(name: "SW4").id, se_end:Location.find_by(name: "SW5").id, distance: "10.5952644987299", time: 635, description: nil, road: "?Small West Road"}, # 105 106
+  {nw_end: Location.find_by(name: "SW5").id, se_end:Location.find_by(name: "SW6").id, distance: "18.6504162723198", time: 1119, description: nil, road: "?Small West Road"}, # 106 107
+  {nw_end: Location.find_by(name: "SW6").id, se_end:Location.find_by(name: "SW7").id, distance: "10.5344562782683", time: 632, description: nil, road: "?Small West Road"}, # 107 108
+  {nw_end: Location.find_by(name: "SW8").id, se_end:Location.find_by(name: "Pelargir").id, distance: "15.9602569235506", time: 957, description: nil, road: "?Small West Road"}, # 109 88
   {nw_end: Location.find_by(name: "Orodruin").id, se_end: Location.find_by(name: "Barad-dur").id, distance: "16.9370044102313", time: 1016, description: nil, road: "Sauron's Road"}, # 55 54
-  {nw_end: Location.find_by(name: "HR1").id0, se_end:Location.find_by(name: "The Crossroads").id, distance: "41.4264760326217", time: 2485, description: nil, road: "Harad Road"}, # 110 72
-  {nw_end: Location.find_by(name: "HR2").id1, se_end:Location.find_by(name: "Morannon").id, distance: "7.1291229632752", time: 427, description: nil, road: "Harad Road"}, # 111 73
-  {nw_end: Location.find_by(name: "HR2").id1, se_end:Location.find_by(name: "HR1").id, distance: "7.05553097923426", time: 423, description: nil, road: "Harad Road"}, # 111 110
+  {nw_end: Location.find_by(name: "HR1").id, se_end:Location.find_by(name: "The Crossroads").id, distance: "41.4264760326217", time: 2485, description: nil, road: "Harad Road"}, # 110 72
+  {nw_end: Location.find_by(name: "HR2").id, se_end:Location.find_by(name: "Morannon").id, distance: "7.1291229632752", time: 427, description: nil, road: "Harad Road"}, # 111 73
+  {nw_end: Location.find_by(name: "HR2").id, se_end:Location.find_by(name: "HR1").id, distance: "7.05553097923426", time: 423, description: nil, road: "Harad Road"}, # 111 110
   {nw_end: Location.find_by(name: "Edoras").id, se_end: Location.find_by(name: "GW1").id, distance: "14.8564042223522", time: 891, description: nil, road: "Great West Road"}, # 86 112
-  {nw_end: Location.find_by(name: "GW1").id2, se_end:Location.find_by(name: "GW2").id, distance: "10.1549592290523", time: 609, description: nil, road: "Great West Road"}, # 112 113
-  {nw_end: Location.find_by(name: "GW2").id3, se_end:Location.find_by(name: "GW3").id, distance: "5.12111325727507", time: 307, description: nil, road: "Great West Road"}, # 113 114
-  {nw_end: Location.find_by(name: "GW3").id4, se_end:Location.find_by(name: "GW4").id, distance: "6.38410276942025", time: 383, description: nil, road: "Great West Road"}, # 114 115
-  {nw_end: Location.find_by(name: "GW4").id5, se_end:Location.find_by(name: "GW5").id, distance: "3.98740847200949", time: 239, description: nil, road: "Great West Road"}, # 115 116
-  {nw_end: Location.find_by(name: "GW5").id6, se_end:Location.find_by(name: "GW6").id, distance: "24.6836288585802", time: 1481, description: nil, road: "Great West Road"}, # 116 117
-  {nw_end: Location.find_by(name: "GW6").id7, se_end:Location.find_by(name: "GW7").id, distance: "22.1255421595633", time: 1327, description: nil, road: "Great West Road"}, # 117 118
-  {nw_end: Location.find_by(name: "GW7").id8, se_end:Location.find_by(name: "GW8").id, distance: "6.97732444211168", time: 418, description: nil, road: "Great West Road"}, # 118 119
-  {nw_end: Location.find_by(name: "GW8").id9, se_end:Location.find_by(name: "Great West Road/?Road of Lossanarch").id, distance: "12.5162551635436", time: 750, description: nil, road: "Great West Road"}, # 119 93
-  {nw_end: Location.find_by(name: "SW7").id8, se_end:Location.find_by(name: "SW8").id, distance: "21.6136610101975", time: 1296, description: nil, road: "?Small West Road"}, # 108 109
+  {nw_end: Location.find_by(name: "GW1").id, se_end:Location.find_by(name: "GW2").id, distance: "10.1549592290523", time: 609, description: nil, road: "Great West Road"}, # 112 113
+  {nw_end: Location.find_by(name: "GW2").id, se_end:Location.find_by(name: "GW3").id, distance: "5.12111325727507", time: 307, description: nil, road: "Great West Road"}, # 113 114
+  {nw_end: Location.find_by(name: "GW3").id, se_end:Location.find_by(name: "GW4").id, distance: "6.38410276942025", time: 383, description: nil, road: "Great West Road"}, # 114 115
+  {nw_end: Location.find_by(name: "GW4").id, se_end:Location.find_by(name: "GW5").id, distance: "3.98740847200949", time: 239, description: nil, road: "Great West Road"}, # 115 116
+  {nw_end: Location.find_by(name: "GW5").id, se_end:Location.find_by(name: "GW6").id, distance: "24.6836288585802", time: 1481, description: nil, road: "Great West Road"}, # 116 117
+  {nw_end: Location.find_by(name: "GW6").id, se_end:Location.find_by(name: "GW7").id, distance: "22.1255421595633", time: 1327, description: nil, road: "Great West Road"}, # 117 118
+  {nw_end: Location.find_by(name: "GW7").id, se_end:Location.find_by(name: "GW8").id, distance: "6.97732444211168", time: 418, description: nil, road: "Great West Road"}, # 118 119
+  {nw_end: Location.find_by(name: "GW8").id, se_end:Location.find_by(name: "Great West Road/?Road of Lossanarch").id, distance: "12.5162551635436", time: 750, description: nil, road: "Great West Road"}, # 119 93
+  {nw_end: Location.find_by(name: "SW7").id, se_end:Location.find_by(name: "SW8").id, distance: "21.6136610101975", time: 1296, description: nil, road: "?Small West Road"}, # 108 109
   {nw_end: Location.find_by(name: "Brandywine Bridge").id, se_end: Location.find_by(name: "ER1").id, distance: "23.2370185711613", time: 1394, description: nil, road: "East Road"}, # 31 128
-  {nw_end: Location.find_by(name: "ER1").id8, se_end:Location.find_by(name: "ER2").id, distance: "6.65775221794366", time: 399, description: nil, road: "East Road"}, # 128 129
-  {nw_end: Location.find_by(name: "ER2").id9, se_end:Location.find_by(name: "East Road/North-South Road").id, distance: "8.53679307443082", time: 512, description: nil, road: "East Road"}, # 129 83
+  {nw_end: Location.find_by(name: "ER1").id, se_end:Location.find_by(name: "ER2").id, distance: "6.65775221794366", time: 399, description: nil, road: "East Road"}, # 128 129
+  {nw_end: Location.find_by(name: "ER2").id, se_end:Location.find_by(name: "East Road/North-South Road").id, distance: "8.53679307443082", time: 512, description: nil, road: "East Road"}, # 129 83
   {nw_end: Location.find_by(name: "East Road/North-South Road").id, se_end: Location.find_by(name: "Bree West Gate").id, distance: "2.64881612468246", time: 158, description: nil, road: "East Road"}, # 83 136
-  {nw_end: Location.find_by(name: "Bree West Gate").id6, se_end:Location.find_by(name: "The Prancing Pony").id, distance: "0.76955396", time: 46, description: nil, road: "East Road"}, # 136 135
-  {nw_end: Location.find_by(name: "The Prancing Pony").id5, se_end:Location.find_by(name: "Bree South Gate").id, distance: "3.46593160021922", time: 207, description: nil, road: "East Road"}, # 135 137
-  {nw_end: Location.find_by(name: "Bree South Gate").id7, se_end:Location.find_by(name: "ER3").id, distance: "11.5723069612762", time: 694, description: nil, road: "East Road"}, # 137 130
-  {nw_end: Location.find_by(name: "ER3").id0, se_end:Location.find_by(name: "ER4").id, distance: "17.69974108", time: 1061, description: nil, road: "East Road"}, # 130 131
-  {nw_end: Location.find_by(name: "ER4").id1, se_end:Location.find_by(name: "ER5").id, distance: "18.9463112119279", time: 1136, description: nil, road: "East Road"}, # 131 132
-  {nw_end: Location.find_by(name: "ER5").id2, se_end:Location.find_by(name: "ER6").id, distance: "6.97732444211168", time: 418, description: nil, road: "East Road"}, # 132 133
-  {nw_end: Location.find_by(name: "ER6").id3, se_end:Location.find_by(name: "ER7").id, distance: "6.15643168", time: 369, description: nil, road: "East Road"}, # 133 134
-  {nw_end: Location.find_by(name: "ER7").id4, se_end:Location.find_by(name: "Last Bridge").id, distance: "8.83639194154377", time: 530, description: nil, road: "East Road"}, # 134 61
+  {nw_end: Location.find_by(name: "Bree West Gate").id, se_end:Location.find_by(name: "The Prancing Pony").id, distance: "0.76955396", time: 46, description: nil, road: "East Road"}, # 136 135
+  {nw_end: Location.find_by(name: "The Prancing Pony").id, se_end:Location.find_by(name: "Bree South Gate").id, distance: "3.46593160021922", time: 207, description: nil, road: "East Road"}, # 135 137
+  {nw_end: Location.find_by(name: "Bree South Gate").id, se_end:Location.find_by(name: "ER3").id, distance: "11.5723069612762", time: 694, description: nil, road: "East Road"}, # 137 130
+  {nw_end: Location.find_by(name: "ER3").id, se_end:Location.find_by(name: "ER4").id, distance: "17.69974108", time: 1061, description: nil, road: "East Road"}, # 130 131
+  {nw_end: Location.find_by(name: "ER4").id, se_end:Location.find_by(name: "ER5").id, distance: "18.9463112119279", time: 1136, description: nil, road: "East Road"}, # 131 132
+  {nw_end: Location.find_by(name: "ER5").id, se_end:Location.find_by(name: "ER6").id, distance: "6.97732444211168", time: 418, description: nil, road: "East Road"}, # 132 133
+  {nw_end: Location.find_by(name: "ER6").id, se_end:Location.find_by(name: "ER7").id, distance: "6.15643168", time: 369, description: nil, road: "East Road"}, # 133 134
+  {nw_end: Location.find_by(name: "ER7").id, se_end:Location.find_by(name: "Last Bridge").id, distance: "8.83639194154377", time: 530, description: nil, road: "East Road"}, # 134 61
   {nw_end: Location.find_by(name: "Weathertop").id, se_end: Location.find_by(name: "ER4").id, distance: "3.8477698", time: 230, description: nil, road: "an unmarked trail"}, # 48 131
   {nw_end: Location.find_by(name: "Midgewater Marshes").id, se_end: Location.find_by(name: "ER3").id, distance: "3.19205138471012", time: 191, description: nil, road: "an unmarked trail"} # 62 130
 ])
