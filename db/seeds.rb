@@ -306,7 +306,7 @@ RouteSegment.create!([
   {nw_end: Location.find_by(name: "East Road/?Sarn Road").id, se_end: Location.find_by(name: "Sarn Ford").id, distance: "16.3840576321753", time: 983, description: nil, road: "?Sarn Road"}, # 91 63
   {nw_end: Location.find_by(name: "Minas Tirith").id, se_end: Location.find_by(name: "Dome of Stars").id, distance: "0.710953721958249", time: 42, description: nil, road: "Great West Road"}, # 50 75
   {nw_end: Location.find_by(name: "Dome of Stars").id, se_end: Location.find_by(name: "Osgiliath").id, distance: "0.801273911753119", time: 48, description: nil, road: "Great West Road"}, # 75 87
-  {nw_end: Location.find_by(name: "Fornost").id, se_end: Location.find_by(name: "Bree").id, distance: "6.70003598897736", time: 402, description: nil, road: "North-South Road"}, # 82 83
+  {nw_end: Location.find_by(name: "Fornost").id, se_end: Location.find_by(name: "East Road/North-South Road").id, distance: "6.70003598897736", time: 402, description: nil, road: "North-South Road"}, # 82 83
   {nw_end: Location.find_by(name: "Morannon").id, se_end: Location.find_by(name: "Isenmouthe").id, road: "Udûn Valley"}, # 73 139
   {nw_end: Location.find_by(name: "Isenmouthe").id, se_end: Location.find_by(name: "Barad-dur").id, road: "a road of unknown name"}, # 139 54
   {nw_end: Location.find_by(name: "Minas Morgul").id, se_end: Location.find_by(name: "Tower of Cirith Ungol").id, road: "Cirith Ungol"}, # 51 138
