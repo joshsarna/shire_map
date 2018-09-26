@@ -363,7 +363,6 @@ RouteSegment.create!([
   {nw_end: Location.find_by(name: "Midgewater Marshes").id, se_end: Location.find_by(name: "ER3").id, distance: "3.19205138471012", time: 191, description: nil, road: "an unmarked trail"} # 62 130
 ])
 
-#ROUTE WARNING
 RouteWarning.create!([
   {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Bamfurlong").id, Location.find_by(name: "Maggot's Lane/The Causeway").id)[0].id, text: "Farmer Maggot has trained dogs to deter the would-be mushroom thief"}, # 29, 37
   {route_segment_id: RouteSegment.where('nw_end = ? AND se_end = ?', Location.find_by(name: "Minas Morgul").id, Location.find_by(name: "Tower of Cirith Ungol").id)[0].id, text: "Here resides an evil thing in spider-form, the last child of Ungoliant to trouble the unhappy world, serving none but herself, drinking the blood of Elves and Men; all living things are her food and her vomit darkness."},
