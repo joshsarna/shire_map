@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     patch '/locations/:id' => 'locations#update'
 
     get '/synonyms' => 'synonyms#index'
+    get '/route_segments' => 'route_segments#index'
 
     post '/routes' => 'routes#create'
     get '/routes/last' => 'routes#show'
