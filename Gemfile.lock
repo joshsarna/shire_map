@@ -54,6 +54,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.1)
     execjs (2.7.0)
+    fellowship (1.0.0)
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -175,6 +176,7 @@ DEPENDENCIES
   activestorage (>= 5.2.1.1)
   bootsnap (>= 1.1.0)
   byebug
+  fellowship
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   loofah (>= 2.2.3)
