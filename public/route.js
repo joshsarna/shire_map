@@ -2,7 +2,7 @@
 
 var jg = new jsGraphics("Canvas");
 
-axios.get('api/routes/last').then(function(response) {
+axios.get("api/routes/" + app.$route.params.startId + "/" + app.$route.params.endId).then(function(response) {
   var xs = [];
   var ys = [];
   xs = response.data.route_xs;

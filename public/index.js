@@ -124,12 +124,12 @@ var noRoute = {
     };
   },
   created: function() {
-    axios.get('/api/locations').then(function(response) {
-      this.locations = response.data;
-    }.bind(this));
-    axios.get('/api/synonyms').then(function(response) {
-      this.synonyms = response.data;
-    }.bind(this));
+    // axios.get('/api/locations').then(function(response) {
+    //   this.locations = response.data;
+    // }.bind(this));
+    // axios.get('/api/synonyms').then(function(response) {
+    //   this.synonyms = response.data;
+    // }.bind(this));
   },
   methods: {
     makeRoute: function() {
@@ -198,7 +198,7 @@ var route = {
   },
   created: function() {
     // get the route
-    axios.get('/api/routes/last').then(function(response) {
+    axios.get('/api/routes/' + this.$route.params.startId + '/' + this.$route.params.endId).then(function(response) {
       console.log(response.data);
       this.route = response.data;
       this.imageUrl = this.route.map.image_url;
@@ -392,7 +392,7 @@ var MapPage = {
     };
   },
   created: function() {
-    axios.get('/api/locations').then(function(response) {
+    axios.get("'/api/locations").then(function(response) {
       this.locations = response.data;
     }.bind(this));
   },
@@ -477,10 +477,11 @@ var HomePage = {
         input_to: this.newRoute.endLocationId
       };
       axios.post('/api/routes', parameters).then(function(response) {
-        console.log(response.data.directions);
+        // console.log(response.data.directions);
         this.route = response.data;
-        router.push("/route");
+        router.push("/routes/" + this.route.start_location_id + "/" + this.route.end_location_id);
       }.bind(this)).catch(function(response) {
+        // console.log(response.status)
         router.push("/noRoute");
       });
     },
@@ -523,7 +524,7 @@ var router = new VueRouter({
     { path: "/shireMap", component: MapPage },
     { path: "/middleEarthMap", component: middleEarthMapPage },
     { path: "/mapOfWorld", component: BeleriandMapPage },
-    { path: "/route", component: route },
+    { path: "/routes/:startId/:endId", component: route },
     { path: "/noRoute", component: noRoute },
     { path: "/about", component: about },
     { path: "/contact", component: contact },

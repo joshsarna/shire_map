@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get '/route_segments' => 'route_segments#index'
 
     post '/routes' => 'routes#create'
-    get '/routes/last' => 'routes#show'
+    get '/routes/:start_id/:end_id' => 'routes#show'
 
     # get maps of various levels
     get '/maps/:level' => 'maps#index'
