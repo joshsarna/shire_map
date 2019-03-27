@@ -432,4 +432,4 @@
 # # segments = RouteSegment.all
 # # p find_route(22, 82, segments, "nw_end", "se_end")
 
-Map.find_by(level: "primary").update(image_url: "https://i.imgur.com/NrgFc4C.jpg")
+Map.find_by(level: "primary").update(image_url: "images/middle_maps.jpg")
